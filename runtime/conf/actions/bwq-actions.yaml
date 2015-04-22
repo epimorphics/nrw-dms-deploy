@@ -48,10 +48,8 @@
     "AWS_INSTANCE_TYPE" : "m3.large"
     "AWS_AMI" : "ami-cda130ba"
     "AWS_SG" : "sg-61a2f404"   # lds-front-end
-    "CHEF_ENV"  : "lds-bwq-test-pres"
-#    "CHEF_ENV"  : "lds-bwq-pres"
-#    "CHEF_ROLE" : "ea-bwq-pres"
-    "CHEF_ROLE" : "nrw-bwq-pres-production"
+    "CHEF_ENV"  : "nrw-bwq-pres"
+    "CHEF_ROLE" : "nrw-bwq-pres"
     "AWS_IAM_ROLE_ARN" : "arn:aws:iam::828737851284:instance-profile/dms-update"
 ---
 # Presentation server allocation (production versio)
@@ -66,8 +64,8 @@
     "AWS_INSTANCE_TYPE" : "m3.large"
     "AWS_AMI" : "ami-cda130ba"
     "AWS_SG" : "sg-61a2f404"   # lds-front-end
-    "CHEF_ENV"  : "lds-bwq-pres"
-    "CHEF_ROLE" : "nrw-bwq-pres-production"
+    "CHEF_ENV"  : "nrw-bwq-pres"
+    "CHEF_ROLE" : "nrw-bwq-pres"
     "AWS_IAM_ROLE_ARN" : "arn:aws:iam::828737851284:instance-profile/dms-update"
 ---
 # Presentation server termination  
