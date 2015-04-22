@@ -17,7 +17,7 @@
                 "AWS_INSTANCE_STORE" : "yes",
                 "AWS_INSTANCE_TYPE" : "m3.medium", 
                 "AWS_AMI" : "ami-096cbd7e",
-                "AWS_SG" : "sg-761ac813",
+                "AWS_SG" : "sg-b6a5f3d3",
                 "CHEF_ROLE" : "dms_data_server"
                  }
   },

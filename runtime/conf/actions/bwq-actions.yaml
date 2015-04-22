@@ -11,10 +11,10 @@
     "AWS_INSTANCE_STORE" : "yes"
     "AWS_INSTANCE_TYPE" : "m3.large"
     "AWS_AMI" : "ami-cda130ba"
-    "AWS_SG" : "sg-761ac813"    # lds-back-end
+    "AWS_SG" : "sg-b6a5f3d3"    # lds-back-end
     "CHEF_ENV"  : "lds-data"
     "CHEF_ROLE" : "dms_data_server"
-    "AWS_IAM_ROLE_ARN" : "arn:aws:iam::853478862498:instance-profile/dms-update"
+    "AWS_IAM_ROLE_ARN" : "arn:aws:iam::828737851284:instance-profile/dms-update"
 ---
 # Data server termination  
 "@name" : bwq/dataserver/terminate
@@ -47,12 +47,12 @@
     "AWS_INSTANCE_STORE" : "yes"
     "AWS_INSTANCE_TYPE" : "m3.large"
     "AWS_AMI" : "ami-cda130ba"
-    "AWS_SG" : "sg-b815c7dd"   # lds-front-end
+    "AWS_SG" : "sg-61a2f404"   # lds-front-end
     "CHEF_ENV"  : "lds-bwq-test-pres"
 #    "CHEF_ENV"  : "lds-bwq-pres"
 #    "CHEF_ROLE" : "ea-bwq-pres"
-    "CHEF_ROLE" : "ea-bwq-pres-production"
-    "AWS_IAM_ROLE_ARN" : "arn:aws:iam::853478862498:instance-profile/dms-update"
+    "CHEF_ROLE" : "nrw-bwq-pres-production"
+    "AWS_IAM_ROLE_ARN" : "arn:aws:iam::828737851284:instance-profile/dms-update"
 ---
 # Presentation server allocation (production versio)
 "@name" : bwq/pres-production/allocate
@@ -65,10 +65,10 @@
     "AWS_INSTANCE_STORE" : "yes"
     "AWS_INSTANCE_TYPE" : "m3.large"
     "AWS_AMI" : "ami-cda130ba"
-    "AWS_SG" : "sg-b815c7dd"   # lds-front-end
+    "AWS_SG" : "sg-61a2f404"   # lds-front-end
     "CHEF_ENV"  : "lds-bwq-pres"
-    "CHEF_ROLE" : "ea-bwq-pres-production"
-    "AWS_IAM_ROLE_ARN" : "arn:aws:iam::853478862498:instance-profile/dms-update"
+    "CHEF_ROLE" : "nrw-bwq-pres-production"
+    "AWS_IAM_ROLE_ARN" : "arn:aws:iam::828737851284:instance-profile/dms-update"
 ---
 # Presentation server termination  
 "@name" : bwq/presserver/terminate
