@@ -28,20 +28,27 @@
 
 { "name" : "rbwd-compliance-assessment",
   "type" : "Composite",
-  "required": [ "samplingpoint", "year", "qualitycode" ],
+  "requiredColumns": [ "samplingpoint", "year", "qualitycode" ],
+  "onlyIf" : "{empty(fdate) && empty(ftime)}", # Guard against uploading inseason as annual
     "bind" : [
         {
-            "$source_base"        : "http://environment.data.gov.uk/sources/bwq",
-            "$data_base"          : "http://environment.data.gov.uk/data/bathing-water-quality",
-            "$body_slug"          : "eaew",
-            "$body_org"           : "http://reference.data.gov.uk/id/public-body/environment-agency",
+#            "$source_base"        : "http://environment.data.gov.uk/sources/bwq",
+            "$source_base"        : "http://environment.data.gov.uk/wales/bathing-waters/sources/bwq",
+#            "$data_base"          : "http://environment.data.gov.uk/data/bathing-water-quality",
+            "$data_base"          : "http://environment.data.gov.uk/wales/bathing-waters/data/bathing-water-quality",
+#            "$body_slug"          : "eaew",
+            "$body_slug"          : "nrw",
+#            "$body_org"           : "http://reference.data.gov.uk/id/public-body/environment-agency",
+            "$body_org"           : "http://naturalresources.wales/#nrw",
             "$def_bw"             : "http://environment.data.gov.uk/def/bathing-water",
             "$def_bwq"            : "http://environment.data.gov.uk/def/bathing-water-quality",
             "$def_bwq_cc_2012"    : "http://environment.data.gov.uk/def/bwq-cc-2012",
             "$def_bwq_cc_2015"    : "http://environment.data.gov.uk/def/bwq-cc-2015",
             "$def_sp"             : "http://location.data.gov.uk/def/ef/SamplingPoint",
-            "$id_bw"              : "http://environment.data.gov.uk/id/bathing-water",
-            "$so_sp"              : "http://location.data.gov.uk/so/ef/SamplingPoint/bwsp.eaew",
+#            "$id_bw"              : "http://environment.data.gov.uk/id/bathing-water",
+            "$id_bw"              : "http://environment.data.gov.uk/wales/bathing-waters/id/bathing-water",
+#            "$so_sp"              : "http://location.data.gov.uk/so/ef/SamplingPoint/bwsp.eaew",
+            "$so_sp"              : "http://environment.data.gov.uk/wales/bathing-waters/so/SamplingPoint",
             "$bwspid"             : "{samplingpoint.format('%05d')}",
             "$pubDateTime"        : "{$exectime.asDate('xsd:dateTime').toWholeSeconds().toLocalTime()}",
             "$ns"                 : "{= asResource($$).replaceAll('#$','') }",
@@ -67,8 +74,8 @@
        ###############################################################################
        # Source for testing only, replace in live service
        ###############################################################################
-#       {
-#         "name"        : "sp-to-bw", 
+       { 
+#         "name"        : "bwq-sp-to-bw", 
 #         "sourceType"  : "RDFSparql", 
 #         "source"      : "transform/map/sites.ttl",
 #         "query"       : 
@@ -88,15 +95,14 @@
 #                  BIND(str(?eubwidT) AS ?eubwid)
 #                  FILTER( lang(?label) = 'en' )
 #               }"
-#       },
-       {
+#       },{
          "name" : "bwq-cc-2015",
          "sourceType" : "CSV" ,
-         "source"     : "transform/bwq-cc-2015.csv",
+         "source"     : "transform/map/bwq-cc-2015.csv",
          "key"        : "code",
-         "value"      : "uri",
+         "value"      : "uri", 
          "makeURI"    : true
-       }
+       }   
     ],
     "oneOffs" : [
 #################################################################################################################################
@@ -171,7 +177,7 @@
          "<dct:license>"     : "<http://reference.data.gov.uk/id/open-government-licence>",
          "<dct:modified>"    : "{$exectime}",
           "<dct:publisher>"   : "<{$body_org}>",
-         "<void:vocabulary>"      : [ "<{$def_bwq_cc_2012}/>", 
+         "<void:vocabulary>"      : [ "<{$def_bwq_cc_2015}/>", 
                                       "<{$ns.apply('def-bwq:' )}>", 
                                       "<{$ns.apply('def-bw:'  )}>", 
                                       "<{$ns.apply('def-sp:'  )}>", 
@@ -199,7 +205,7 @@
 # Individual Annual Compliance Assessements
 #################################################################################################################################
       { "name": "rbwd-cc-annual-compliance",
-        "@id" : "<{$complianceDataset}/point/{$bwspid}/year/{year.format('%04d')}>",
+        "@id"                                : "<{$complianceAssessment}>",
         "<rdf:type>"                         : [ "<qb:Observation>" , "<def-bwq:ComplianceAssessment>" ],
         "<rdfs:label>"                       : "{year} compliance assessment for {$bwLabel}@en",
         "<def-bwq:samplingPoint>"            : "<{$so_sp}/{$bwspid}>",
@@ -215,28 +221,28 @@
                                                            .append($bwspid)
                                                            .append('/year/')
                                                            .append(year.format('%04d')) : null}>",
-
+                                                           
                                                  "<{($startSampleDate.year.value <= year.value-1 && 
                                                      year.value-1 <= $endSampleDate.year.value) ? 
                                                            $data_base.append('/in-season/slice/point/')
                                                            .append($bwspid)
                                                            .append('/year/')
                                                            .append(value(year.value-1).format('%04d')) : null}>",
-
+                                                           
                                                  "<{($startSampleDate.year.value <= year.value-2 && 
                                                      year.value-2 <= $endSampleDate.year.value) ? 
                                                            $data_base.append('/in-season/slice/point/')
                                                            .append($bwspid)
                                                            .append('/year/')
                                                            .append(value(year.value-2).format('%04d')) : null}>",
-
+                                                           
                                                  "<{($startSampleDate.year.value <= year.value-3 && 
                                                      year.value-3 <= $endSampleDate.year.value) ? 
                                                            $data_base.append('/in-season/slice/point/')
                                                            .append($bwspid)
                                                            .append('/year/')
                                                            .append(value(year.value-3).format('%04d')) : null}>" ],
-
+        
 ###
         "<def-bwq:assessmentRegime>"         : "<def-bwq:rBWD>",
         "<def-bwq:firstSampleDate>"          : "{empty($startSampleDate) ? null : $startSampleDate}",
@@ -332,8 +338,8 @@
 #    and post 2011 slices are only attached to the per-body cube (of which there is only one in any case).
 #    In this conversion, new slices are added to both the over all cube and the per body cube.
 #
-# See http://environment.data.gov.uk/data/bathing-water-quality/eaew/compliance?_view=description
-#     http://environment.data.gov.uk/data/bathing-water-quality/compliance?_view=description
+# See http://environment.data.gov.uk/wales/bathing-waters/data/bathing-water-quality/nrw/compliance-rBWD?_view=description
+#     http://environment.data.gov.uk/wales/bathing-waters/data/bathing-water-quality/compliance-rBWD?_view=description
 #
 ##################################################################################################################################
          "<qb:slice>"        : [
@@ -351,14 +357,14 @@
 #    and post 2011 slices are only attached to the per-body cube (of which there is only one in any case).
 #    In this conversion, new slices are added to both the over all cube and the per body cube.
 #
-# See http://environment.data.gov.uk/data/bathing-water-quality/eaew/compliance?_view=description
-#     http://environment.data.gov.uk/data/bathing-water-quality/compliance?_view=description
+# See http://environment.data.gov.uk/wales/bathing-waters/data/bathing-water-quality/nrw/compliance?_view=description
+#     http://environment.data.gov.uk/wales/bathing-waters/data/bathing-water-quality/compliance?_view=description
 #
 ##################################################################################################################################
          "<qb:slice>"        : [
                                   "<{$yearSlice}>",
                                   "<{$pointSlice}>"
-                               ]
+                               ]  
       }
     ]
 }

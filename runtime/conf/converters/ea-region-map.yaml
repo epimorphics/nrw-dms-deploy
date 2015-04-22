@@ -1,5 +1,5 @@
 name       : ea-region
 sourceType : CSV
-source     : "transform/ea-region.csv"
+source     : "transform/map/ea-region.csv"
 key        : code
 value      : region

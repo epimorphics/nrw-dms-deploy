@@ -19,17 +19,25 @@
          ],
     "bind" : [
         {
-            "$source_base"        : "http://environment.data.gov.uk/sources/bwq",
-            "$data_base"          : "http://environment.data.gov.uk/data/bathing-water-quality",
-            "$body_slug"          : "eaew",
-            "$body_org"           : "http://reference.data.gov.uk/id/public-body/environment-agency",
+#            "$source_base"        : "http://environment.data.gov.uk/sources/bwq",
+            "$source_base"        : "http://environment.data.gov.uk/wales/bathing-waters/sources/bwq",
+#            "$data_base"          : "http://environment.data.gov.uk/data/bathing-water-quality",
+            "$data_base"          : "http://environment.data.gov.uk/wales/bathing-waters/data/bathing-water-quality",
+#            "$body_slug"          : "eaew",
+            "$body_slug"          : "nrw",
+#            "$body_org"           : "http://reference.data.gov.uk/id/public-body/environment-agency",
+            "$body_org"           : "http://naturalresources.wales/#nrw",
             "$def_bw"             : "http://environment.data.gov.uk/def/bathing-water",
             "$def_sp"             : "http://location.data.gov.uk/def/ef/SamplingPoint",
             "$def_stp"            : "http://environment.data.gov.uk/def/bwq-stp",
-            "$id_bw"              : "http://environment.data.gov.uk/id/bathing-water",
-            "$so_sp"              : "http://location.data.gov.uk/so/ef/SamplingPoint/bwsp.eaew",
-            "$so_env"             : "http://location.data.gov.uk/so/common/Envelope/bwpf.eaew",
-            "$so_zoi"             : "http://location.data.gov.uk/so/ef/ZoneOfInfluence/bwzoi.eaew",
+#            "$id_bw"              : "http://environment.data.gov.uk/id/bathing-water",
+            "$id_bw"              : "http://environment.data.gov.uk/wales/bathing-waters/id/bathing-water",
+#            "$so_sp"              : "http://location.data.gov.uk/so/ef/SamplingPoint/bwsp.eaew",
+            "$so_sp"              : "http://environment.data.gov.uk/wales/bathing-waters/so/SamplingPoint",
+#            "$so_env"             : "http://location.data.gov.uk/so/common/Envelope/bwpf.eaew",
+            "$so_env"             : "http://environment.data.gov.uk/wales/bathing-waters/so/Envelope",
+#            "$so_zoi"             : "http://location.data.gov.uk/so/ef/ZoneOfInfluence/bwzoi.eaew",
+            "$so_zoi"             : "http://environment.data.gov.uk/wales/bathing-waters/so/ZoneOfInfluence",
             "$bwspid"             : "{site.format('%05d')}",
             "$pubDateTime"        : "{$exectime.asDate('xsd:dateTime').toWholeSeconds().toLocalTime()}",
             "$predictionDateTime" : "{datetime.asDate('yyyy-MM-dd\\'T\\'hh:mm:ss|yyyy-MM-dd\\'T\\'hh:mm:ssZZ|yyyy-MM-dd\\'T\\'HH:mm:ssZ','xsd:dateTime').toLocalTime()}",
@@ -58,14 +66,14 @@
 # @@TODO 5: Possibly replace with some LDS-BWQ infrastructure map (several transforms will need it).
  
     "sources" : [
-       # { "name"       : "sp-to-bw",
-       #   "sourceType" : "RDF",
-       #   "source"     : "sites.ttl",
-       #   "key"        : "<skos:notation>",
-       #   "value"      : "<def-bw:bathingWater>",
-       #   "type"       : "<def-sp:SamplingPoint>",
-       #   "makeURI"    : true
-       # }
+#       { "name"       : "bwq-sp-to-bw",
+#         "sourceType" : "RDF",
+#         "source"     : "transform/map/sites.ttl",
+#         "key"        : "<skos:notation>",
+#         "value"      : "<def-bw:bathingWater>",
+#         "type"       : "<def-sp:SamplingPoint>",
+#         "makeURI"    : true
+#       }
     ],
     "oneOffs" : [
        { "name"              : "bwq-stp-dataset" ,
@@ -121,7 +129,7 @@
          "<dct:modified>"    : "{$pubDateTime}",
 # @@TODO 3: rationalise dump file name
          "<void:dataDump>"   : "<{$source_base}/{$body_slug}/output/{$filebasename}-{$pubDateTime}.ttl>"
-       }
+       }         
     ],
  ##########################################################################################################
  # Main STP conversion template.
@@ -135,9 +143,10 @@
          "<def-stp:predictedAt>"  : "{$predictionDateTime}",
          "<def-stp:predictedOn>"  : "{$predictionDateTime.format('yyyy-MM-dd').asDate('yyyy-MM-dd','xsd:date')}",
          "<def-stp:expiresAt>"    : "{$expiresDateTime}",
-         "<def-stp:riskLevel>"    : "<{prediction.value == 0 ? $def_stp.append('/unknown') :
-                                       prediction.value == 1 ? $def_stp.append('/normal')  :
-                                       prediction.value == 2 ? $def_stp.append('/increased') : null}>",
+         "<def-stp:riskLevel>"    : ["<{prediction.value == 0 ? $def_stp.append('/unknown') :
+                                        prediction.value == 1 ? $def_stp.append('/normal')  :
+                                        prediction.value == 2 ? $def_stp.append('/increased') : null}>" 
+                                    ],
          "<def-stp:samplingPoint>": "<{$so_sp}/{$bwspid}>",
          "<def-stp:bathingWater>" : "{$bathing_water}",
          "<rdfs:comment>"         : [ "{(prediction_text_en ==null)? null : prediction_text_en.lang('en')}", 

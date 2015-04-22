@@ -59,11 +59,15 @@ required :
 #  - eubwid
 
 bind :
-  - "$source_base"        : "http://environment.data.gov.uk/sources/bwq"
-    "$data_base"          : "http://environment.data.gov.uk/data/bathing-water-profile"
-    "$body_slug"          : "eaew"
+#  - "$source_base"        : "http://environment.data.gov.uk/sources/bwq"
+  - "$source_base"        : "http://environment.data.gov.uk/wales/bathing-waters/sources/bwq"
+#    "$data_base"          : "http://environment.data.gov.uk/data/bathing-water-profile"
+    "$data_base"          : "http://environment.data.gov.uk/wales/bathing-waters/data/bathing-water-profile"
+#    "$body_slug"          : "eaew"
+    "$body_slug"          : "nrw"
     "$version"            : "1"
-    "$imagesURI"          : "http://environment.data.gov.uk/media/image/bathing-water-profile"
+#    "$imagesURI"          : "http://environment.data.gov.uk/media/image/bathing-water-profile"
+    "$imagesURI"          : "http://environment.data.gov.uk/wales/bathing-waters/media/image/bathing-water-profile"
     "$sp"                 : "{samplingpoint.format('%05d')}"
     "$pubDateTime"        : "{$exectime.asDate('xsd:dateTime').toWholeSeconds().toLocalTime()}"
     "$filestub"           : "{$filename.replaceAll('\\.csv$','')}"
@@ -81,19 +85,19 @@ bind :
     "$slcRes"             : "<{$data_base}-standard-language/{profile_year}-{$sp}:{$version}>"
     "$endurantRes"        : "<{$data_base}-endurant/{$eubwid}/{profile_year}>"
     "$bw"                 : "{$sp.map('bwq-sp-to-bw')}"
-    "$seasonStartDate"    : "{empty(monseasonstart)  ? null : $parseDate.apply(monseasonstart)}"
+    "$seasonStartDate"    : "{empty(monseasonstart)  ? null : $parseDate.apply(monseasonstart)}" 
     "$seasonFinishDate"   : "{empty(monseasonfinish) ? null : $parseDate.apply(monseasonfinish).plus(23,59,59)}" 
-
+    
   - "$seasonIntervalDays" : "{(empty($seasonStartDate) || empty($seasonFinishDate)) ? null : $seasonStartDate.diffWholeDays($seasonFinishDate)}"
-
+  
   - "$seasonIntervalDuration" : "{(empty($seasonStartDate) || empty($seasonFinishDate)) ? null : value('P').append($seasonIntervalDays).append('DT23H59M59S')}"
-
+  
   - "$seasonIntervalURI"  : "{(empty($seasonStartDate) || empty($seasonFinishDate)) ? null : 
                                   value('http://reference.data.gov.uk/id/gregorian-interval/')
                                   .append($seasonStartDate.format('YYYY-MM-dd'))
                                   .append('T00:00:00/')
                                   .append($seasonIntervalDuration)}"
-
+  
 #sources :
 ###############################################################################
 # Source for testing only, replace in live service
@@ -132,8 +136,8 @@ oneOffs :
 
     - "@id"                    : "<{$void_profiles_eaew_year}>"
       "<rdf:type>"             : "<void:Dataset>"
-      "<rdfs:label>"           : "{profile_year} Profiles for bathing waters monitored by the Environment Agency for England and Wales.@en"
-      "<dct:description>"      : "Dataset of profiles, published in {profile_year}, of bathing waters in England and Wales monitored by the Environment Agency for compliance with the EU Bathing Water Directive@en"
+      "<rdfs:label>"           : "{profile_year} Profiles for bathing waters monitored by Natrural Resources Wales.@en"
+      "<dct:description>"      : "Dataset of profiles, published in {profile_year}, of bathing waters in Wales monitored by the Natural Resources Wales for compliance with the EU Bathing Water Directive@en"
       "<dct:license>"          : "<http://reference.data.gov.uk/id/open-government-licence>"
       "<dct:modified>"         : "{$pubDateTime}"
       "<dct:source>"           : "<{$infile}>"
@@ -143,8 +147,8 @@ oneOffs :
 
     - "@id"                    : "<{$void_profiles_eaew}>"
       "<rdf:type>"             : "<void:Dataset>"
-      "<rdfs:label>"           : "Profiles for bathing waters monitored by the Environment Agency for England and Wales.@en"
-      "<dct:description>"      : "Dataset of profiles of bathing waters in England and Wales monitored by the Environment Agency for compliance with the EU Bathing Water Directive@en"
+      "<rdfs:label>"           : "Profiles for bathing waters monitored by Natural Resources Wales.@en"
+      "<dct:description>"      : "Dataset of profiles of bathing waters in Wales monitored by the Natural Resources Wales for compliance with the EU Bathing Water Directive@en"
       "<dct:license>"          : "<http://reference.data.gov.uk/id/open-government-licence>"
       "<dct:modified>"         : "{$pubDateTime}"
       "<dct:source>"           : "<{$infile}>"
@@ -155,8 +159,8 @@ oneOffs :
 
     - "@id"                    : "<{$void_profiles}>"
       "<rdf:type>"             : "<void:Dataset>"
-      "<rdfs:label>"           : "Profiles for UK bathing waters.@en"
-      "<dct:description>"      : "Dataset of profiles for UK bathing waters.@en"
+      "<rdfs:label>"           : "Profiles for bathing waters monitored by Natural Resources Wales.@en"
+      "<dct:description>"      : "Dataset of profiles for bathing waters monitered by Natural Resources Wales.@en"
       "<dct:license>"          : "<http://reference.data.gov.uk/id/open-government-licence>"
       "<dct:modified>"         : "{$pubDateTime}"
       "<dct:source>"           : "<{$infile}>"
@@ -179,7 +183,8 @@ referenced :
     bind :
       "$intervalRes"             : "<{$profileURI}/intervals/interval>"
       "$interval_dt"             : "<http://reference.data.gov.uk/id/gregorian-instant/{profile_year}-01-01T00:00:00>"
-      "$laRes"                   : "<http://location.data.gov.uk/id/au/localAuthority/ons:gss/{$sp.map('bwq-sp-to-bw', 'gss', true)}>"
+#      "$laRes"                   : "<http://location.data.gov.uk/id/au/localAuthority/ons:gss/{$sp.map('sp-to-bw', 'gss', true)}>"
+      "$laRes"                   : "<http://environment.data.gov.uk/wales/bathing-waters/id/au/localAuthority/ons:gss/{$sp.map('bwq-sp-to-bw', 'gss', true)}>"
       "$twitterAccountInfo"      : "<{(empty($profileURI) || empty(socialmedia) || socialmedia.trim()=='') ? null : $profileURI.append('/social/twitter')}>"
     templates :
 
@@ -218,9 +223,9 @@ referenced :
                                        (prf.asString().toLowerCase()=='yes')   ? true  :
                                        (prf.asString().toLowerCase()=='no')    ? false : null }"
       "<def-bwp:seasonInterval>"   : "<{$seasonIntervalURI}>"
-      "<def-bwp:seasonStartDate>"  : "{$seasonStartDate.format('yyyy-MM-dd').asDate('xsd:date')}"
-      "<def-bwp:seasonFinishDate>" : "{$seasonFinishDate.format('yyyy-MM-dd').asDate('xsd:date')}"
-
+      "<def-bwp:seasonStartDate>"  : "{empty($seasonStartDate)  ? null : $seasonStartDate.format('yyyy-MM-dd').asDate('xsd:date')}"
+      "<def-bwp:seasonFinishDate>" : "{empty($seasonFinishDate) ? null : $seasonFinishDate.format('yyyy-MM-dd').asDate('xsd:date')}"
+                                       
     # Standard language - for 2014 there is a different SLC for every profile(!)
     - "@id"                      : "{$slcRes}"
       "<rdf:type>"               : "<def-bwp:StandardLanguageCollection>"
@@ -242,14 +247,14 @@ referenced :
       "<rdf:type>"                : "<def-bwp:EnduringBathingWaterProfile>"
       "<dct:hasVersion>"          : "<{$profileURI}>"
       "<def-ver:currentVersion>"  : "<{$profileURI}>"
-
+     
     # Social Media account (Twitter) 
     - "@id"                            : "{$twitterAccountInfo}"
-      "<rdf:type>"                     : "<foaf:OnlineAccount>"
-      "<foaf:accountServiceHomepage>"  : "<http://www.twitter.com>"
+      "<rdf:type>"                     : "<foaf:OnlineAccount>" 
+      "<foaf:accountServiceHomepage>"  : "<http://www.twitter.com>" 
       "<foaf:accountProfilePage>"      : "<http://www.twitter.com/{socialmedia.trim()}>"
       "<foaf:accountName>"             : "{socialmedia.trim()}"
-
+    
     # Season Interval
     - "@id"                                  : "<{$seasonIntervalURI}>"
       "<rdf:type>"                           : "<time:Interval>"
@@ -258,7 +263,7 @@ referenced :
       "<interval:hasXsdDurationDescription>" : "{$seasonIntervalDuration}^^xsd:duration"
 
 ###############################################################################
-# Template for English profiles
+# Template for profiles in English
 ###############################################################################
   - name      : revised-bwq-profile-eng
     type      : Composite
@@ -292,10 +297,10 @@ referenced :
       "<def-bwp:phytoplanktonStatement>"            : "{phytoplankton}@en"
 # Added next three fields for 2015 season
       "<def-bwp:stepChangeStatement>"               : "{step_changes}@en"
-      "<def-bwp:pollutionRiskForecastStatement>"     : "{prf_warning_summary}@en"
+      "<def-bwp:pollutionRiskForecastStatement>"    : "{prf_warning_summary}@en"
       "<def-bwp:visiblePollutionStatement>"          : "{visual_pollution}@en"
 ###############################################################################
-# Template for Welsh profiles
+# Template for profiles in Welsh
 ###############################################################################
   - name      : revised-bwq-profile-wales
     type      : Composite
@@ -321,8 +326,8 @@ referenced :
       "<def-bwp:phytoplanktonStatement>"            : "{w_phytoplankton}@cy"
 # Added Welsh versions for good measure.
       "<def-bwp:stepChangesStatement>"              : "{w_step_changes}@cy"
-      "<def-bwp:pollutionRiskForecastStatement>"      : "{w_prf_warning_summary}@cy"
-      "<def-bwp:visiblePollutionStatement>"          : "{w_visual_pollution}@cy"
-
+      "<def-bwp:pollutionRiskForcastStatment>"      : "{w_prf_warning_summary}@cy"
+      "<def-bwp:visualPollutionStatement>"          : "{w_visual_pollution}@cy"
+      
     - "@id"                    : "{$laRes}"
       "<rdfs:label>"           : "{w_la}@cy"

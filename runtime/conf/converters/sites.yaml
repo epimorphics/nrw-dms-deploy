@@ -43,24 +43,39 @@
             "$void_ns"             : "<void:>",
             "$time_ns"             : "<time:>",
 
-            "$source_base" : "http://environment.data.gov.uk/sources/bwq",
-            "$body_slug"   : "eaew",
+#            "$source_base" : "http://environment.data.gov.uk/sources/bwq",
+            "$source_base" : "http://environment.data.gov.uk/wales/bathing-waters/sources/bwq",
+#            "$body_slug"   : "eaew",
+            "$body_slug"   : "nrw",
             "$outputFileName" : "reference.ttl",
             "$def_bw"  : "http://environment.data.gov.uk/def/bathing-water",
             "$def_sp"  : "http://location.data.gov.uk/def/ef/SamplingPoint",
-            "$id_bw"   : "http://environment.data.gov.uk/id/bathing-water",
-            "$so_sp"   : "http://location.data.gov.uk/so/ef/SamplingPoint/bwsp.eaew",
-            "$so_env"  : "http://location.data.gov.uk/so/common/Envelope/bwpf.eaew",
-            "$so_zoi"  : "http://location.data.gov.uk/so/ef/ZoneOfInfluence/bwzoi.eaew",
+#            "$id_bw"   : "http://environment.data.gov.uk/id/bathing-water",
+            "$id_bw"   : "http://environment.data.gov.uk/wales/bathing-waters/id/bathing-water",
+#####################################################################################################
+# Relocate Spatial-Objects into enviroment.data.gov.uk/wales/bathing-waters
+# Drop embedded 
+#   - {theme}            <- doesn't add anything 
+#   - {inspireNamespace} <- environment.data.gov.uk/wales/bathing-waters/so/{FeatureType} serves same purpose.
+# segments
+#####################################################################################################
+#            "$so_sp"   : "http://location.data.gov.uk/so/ef/SamplingPoint/bwsp.eaew",
+            "$so_sp"   : "http://environment.data.gov.uk/wales/bathing-waters/so/SamplingPoint",
+#            "$so_env"  : "http://location.data.gov.uk/so/common/Envelope/bwpf.eaew",
+            "$so_env"  : "http://environment.data.gov.uk/wales/bathing-waters/so/Envelope",
+#            "$so_zoi"  : "http://location.data.gov.uk/so/ef/ZoneOfInfluence/bwzoi.eaew",  
+            "$so_zoi"  : "http://environment.data.gov.uk/wales/bathing-waters/so/ZoneOfInfluence",
+######################################################################################################
             "$bwspid"  : "{samplingpoint.format('%05d')}",
             "$eubwid"  : "{eubwid.trim().toLowerCase().replaceAll('\\s+','-')}", # replace running whitespace with a single '-'
             "$altBwId" : "{description_english.replaceAll('[-#$&?]+',' ').replaceAll('[\\'`(),]','').trim().replaceAll('\\s+','-').toLowerCase()}",
             "$s_bwt"   : "{bathing_water_type.toLowerCase()}",
-            "$eaRegion" : "{ea_region.map('ea-region')}",
+#            "$eaRegion" : "{ea_region.map('ea-region')}",
             "$sediment" : "{sediment_types.toLowerCase().replaceAll('\\\\sand\\\\s',',')}",
             "$srsDim"  : "2",
             "$srs"     : "http://www.opengis.net/def/crs/EPSG/0/27700",
             "$EA"      : "http://reference.data.gov.uk/id/public-body/environment-agency",
+            "$NRW"     : "http://naturalresources.wales/#nrw",
             "$england"  : "http://data.ordnancesurvey.co.uk/id/country/england",
             "$scotland" : "http://data.ordnancesurvey.co.uk/id/country/scotland",
             "$wales"    : "http://data.ordnancesurvey.co.uk/id/country/wales",
@@ -108,8 +123,8 @@
           "<rdf:type>"             : [ "<dgu:URIset>", "<void:Dataset>" ],
 # [SPATIALREL, GEOWGS84, SKOS, GEOMETRY, SP, BW, ADMINGEO, AGEO, DGU, ORG],
           "<void:vocabulary>"      : [ "<{$spatialrelations_voc}>", "<{$geo_voc}>", "<{$skos_voc}>", "<{$geometry_voc}>", "<{$def_sp_voc}>", "<{$def_bw_voc}>", "<{$admingeo_voc}>", "<{$onsadmingeo_voc}>", "<{$org_voc}>", "<{$dgu_voc}>", "<{$def_geom_voc}>" ] ,
-          "<rdfs:label>"           : "{'Bathing waters monitored by the Environment Agency for England and Wales.'}@en",
-          "<dct:description>"      : "{'URI Set of Bathing Waters in England and Wales monitored by the Environment Agency for compliance with the EU Bathing Water Directive'}@en",
+          "<rdfs:label>"           : "{'Bathing waters monitored by the Natural Resources Wales.'}@en",
+          "<dct:description>"      : "{'URI Set of Bathing Waters in Wales monitored by the Natural Resources Wales for compliance with the EU Bathing Water Directive'}@en",
           "<dct:license>"          : "<http://reference.data.gov.uk/id/open-government-licence>",
           "<dct:source>"           : "<{$source_base}/{$body_slug}/input/{$fileName}>",
           "<dct:modified>"         : "{$exectime}",
@@ -123,7 +138,7 @@
           "<rdf:type>"             : [ "<dgu:URIset>", "<void:Dataset>" ],
 # [SPATIALREL, GEOWGS84, SKOS, GEOMETRY, SP, BW]
           "<void:vocabulary>"      : [ "<{$spatialrelations_voc}>",  "<{$geo_voc}>", "<{$skos_voc}>", "<{$geometry_voc}>", "<{$def_sp_voc}>", "<{$def_bw_voc}>", "<{$dgu_voc}>", "<{$def_geom_voc}>", "<{$void_voc}>"  ] ,
-          "<rdfs:label>"           : "{'Environment Agency Bathing Water Profile Map Extent Bounding Boxes for England and Wales'}@en",
+          "<rdfs:label>"           : "{'Natural Resources Wales Bathing Water Profile Map Extent Bounding Boxes for England and Wales'}@en",
           "<dct:description>"      : "{'This dataset containing suggested map extents for use in rending Bathing Water Profiles.'}@en",
           "<dct:license>"          : "<http://reference.data.gov.uk/id/open-government-licence>",
           "<dct:source>"           : "<{$source_base}/{$body_slug}/input/{$fileName}>",
@@ -138,8 +153,8 @@
           "<rdf:type>"             : [ "<dgu:URIset>", "<void:Dataset>" ],
 # [ADMINGEO, SPATIALREL, GEOWGS84, SKOS, GEOMETRY, ZOI, BW]
           "<void:vocabulary>"      : [ "<{$admingeo_voc}>", "<{$spatialrelations_voc}>", "<{$geo_voc}>", "<{$skos_voc}>", "<{$geometry_voc}>" , "<{$def_zoi_voc}>", "<{$def_bw_voc}>", "<{$dgu_voc}>", "<{$void_voc}>"] ,
-          "<rdfs:label>"           : "{'Environment Agency Bathing Water Zones of Influence'}@en",
-          "<dct:description>"      : "{'This dataset contains the extent of zones of influence associated with bathing waters monitored by the Environment Agency for England and Wales.'}@en",
+          "<rdfs:label>"           : "{'Natural Resources Wales Bathing Water Zones of Influence'}@en",
+          "<dct:description>"      : "{'This dataset contains the extent of zones of influence associated with bathing waters monitored by the Natural Resources Wales.'}@en",
           "<dct:license>"          : "<http://reference.data.gov.uk/id/open-government-licence>",
           "<dct:source>"           : "<{$source_base}/{$body_slug}/input/{$fileName}>",
           "<dct:modified>"         : "{$exectime}",
@@ -153,8 +168,8 @@
           "<rdf:type>"             : [ "<dgu:URIset>", "<void:Dataset>" ],
  # [QB, VOID, TIME, BWQ, DCTERMS, DGU, SP, BW, ZOI, GEOMETRY, LOCGEOM, SPATIALREL, GEOWGS84, AGEO, SKOS, ADMINGEO],
           "<void:vocabulary>"      : [ "<{$qb_voc}>", "<{$void_voc}>", "<{$time_voc}>", "<{$def_bwq_voc}>", "<{$dct_voc}>","<{$dgu_voc}>", "<{$def_sp_voc}>", "<{$def_bw_voc}>","<{$def_zoi_voc}>", "<{$geometry_voc}>", "<{$def_geom_voc}>","<{$spatialrelations_voc}>", "<{$geo_voc}>",  "<{$skos_voc}>",   "<{$onsadmingeo_voc}>", "<{$admingeo_voc}>" ] ,
-          "<rdfs:label>"           : "{'Environment Agency Bathing Water Quality Monitoring Sampling Points for England and Wales'}@en",
-          "<dct:description>"      : "{'This dataset contains the location of bathing water quality sampling points used by the Environment Agency to monitor bathing waters in England and Wales for compliance with the EU Bathing Water Directive.'}@en",
+          "<rdfs:label>"           : "{'Natural Resources Wales Bathing Water Quality Monitoring Sampling Points'}@en",
+          "<dct:description>"      : "{'This dataset contains the location of bathing water quality sampling points used by the Natural Resources Wales to monitor bathing waters in Wales for compliance with the EU Bathing Water Directive.'}@en",
           "<dct:license>"          : "<http://reference.data.gov.uk/id/open-government-licence>",
           "<dct:source>"           : "<{$source_base}/{$body_slug}/input/{$fileName}>",
           "<dct:modified>"         : "{$exectime}",
@@ -166,11 +181,13 @@
         { "name"                 : "bwq-public-body-import",
           "@id"                  : 
              "<{{
-                  var r_ea = $EA.fetch().asRDFNode() ;               
+                  var r_ea = $NRW.fetch().asRDFNode() ;               
                   r_ea.listPropertyValues('org:hasUnit').fetch('rdfs:label','rdf:type', 'skos:prefLabel');
                   return r_ea
               }}>",
-#          "<rdfs:label>"         : "{$EA.fetch().asRDFNode().getPropertyValue('rdfs:label').lexicalForm}"
+          "<foaf:homepage>"      : "<{$NRW.replaceAll('#nrw','')}>",
+          "<rdf:type>"           : "<org:Organization>",   
+          "<rdfs:label>"         : ["Natural Resources Wales@en", "Cyfoeth Naturiol Cymru@cy" ]
         },
 #######################################################################################################################
 # OS Country reference data
@@ -246,17 +263,17 @@
         }
     ],
     "sources" : [
-        # {
-        #     "name"       : "region",
-        #     "sourceType" : "CSV",
-        #     "source"     : "transform/ea-region.csv",
-        #     "key"        : "code",
-        #     "value"      : "region"
-        # },
+#        {
+#            "name"       : "ea-region",
+#            "sourceType" : "CSV",
+#            "source"     : "transform/map/ea-region.csv",
+#            "key"        : "code",
+#            "value"      : "region"
+#        },
         {
             "name"       : "bwq-sediment",
             "sourceType" : "CSV",
-            "source"     : "transform/sediment.csv",
+            "source"     : "transform/map/sediment.csv",
             "key"        : "code",
             "value"      : "sediment_type",
             "makeURI"    : "true"
@@ -264,7 +281,7 @@
         {
             "name"       : "bwq-bw_type",
             "sourceType" : "CSV",
-            "source"     : "transform/bw_type.csv",
+            "source"     : "transform/map/bw_type.csv",
             "key"        : "code",
             "value"      : "bw_type",
             "makeURI"    : "true"
@@ -305,7 +322,8 @@
             "<owl:sameAs>"                             : "<{$id_bw}/{$altBwId}>",
             "<def-bw:yearDesignated>"                  : "{empty(des_year)    ? null : des_year.asDate('xsd:gYear').referenceTime()}",
             "<def-bw:yearDedesignated>"                : "{empty(de_des_year) ? null : de_des_year.asDate('xsd:gYear').referenceTime()}",
-            "<def-bw:regionalOrganization>"            : "<{$eaRegion}>",
+ #           "<def-bw:regionalOrganization>"            : "<{$eaRegion}>",
+            "<def-bw:regionalOrganization>"            : "<{$NRW}>",
             "<def-bw:sedimentTypesPresent>"            : "<{$sediment.split(',').map('bwq-sediment')}>",
             "<def-bw:waterQualityImpactedByHeavyRain>" : "{impact_from_heavy_rainfall.toLowerCase()=='yes' ? true :
                                                            impact_from_heavy_rainfall.toLowerCase()=='no'  ? false : null }",

@@ -11,16 +11,23 @@ bind :
 #####################################################################################################################
 # URI and slugs
 #####################################################################################################################
-    - "$source_base"   : "http://environment.data.gov.uk/sources/bwq"
-      "$data_base"     : "http://environment.data.gov.uk/data/bathing-water-quality"
-      "$body_slug"     : "eaew"
-      "$body_org"      : "http://reference.data.gov.uk/id/public-body/environment-agency"
+#    - "$source_base"   : "http://environment.data.gov.uk/sources/bwq"
+    - "$source_base"   : "http://environment.data.gov.uk/wales/bathing-waters/sources/bwq"
+#      "$data_base"     : "http://environment.data.gov.uk/data/bathing-water-quality"
+      "$data_base"     : "http://environment.data.gov.uk/wales/bathing-waters/data/bathing-water-quality"
+#      "$body_slug"     : "eaew"
+      "$body_slug"     : "nrw"
+#      "$body_org"      : "http://reference.data.gov.uk/id/public-body/environment-agency"
+      "$body_org"      : "http://naturalresources.wales/#nrw"
       "$def_bw"        : "http://environment.data.gov.uk/def/bathing-water"
       "$def_sp"        : "http://location.data.gov.uk/def/ef/SamplingPoint"
       "$def_som"       : "http://environment.data.gov.uk/def/bwq-som"
-      "$id_bw"         : "http://environment.data.gov.uk/id/bathing-water"
-      "$so_sp"         : "http://location.data.gov.uk/so/ef/SamplingPoint/bwsp.eaew"
-      "$so_env"        : "http://location.data.gov.uk/so/common/Envelope/bwpf.eaew"
+#      "$id_bw"         : "http://environment.data.gov.uk/id/bathing-water"
+      "$id_bw"         : "http://environment.data.gov.uk/wales/bathing-waters/id/bathing-water"
+#      "$so_sp"         : "http://location.data.gov.uk/so/ef/SamplingPoint/bwsp.eaew"
+      "$so_sp"         : "http://environment.data.gov.uk/wales/bathing-waters/so/SamplingPoint"
+#      "$so_env"        : "http://location.data.gov.uk/so/common/Envelope/bwpf.eaew"
+      "$so_env"        : "http://environment.data.gov.uk/wales/bathing-waters/so/Envelope"
       "$bwspid"        : "{samplingpoint.replaceAll('^[^0-9]*','')}"
       "$parseDate"     : "{= $$.asDate('dd/MM/yyyy|dd-MM-yyyy|yyyy-MM-dd|yyyy/MM/dd|yyyyMMdd|dd-MMM-yyyy|MMM-dd-yyyy|dd-MMM-yy|MMM-dd-yy','xsd:date')}"
       "$affectedYears" : "{assessment_years_affected.split(',').trim()}"
@@ -31,26 +38,26 @@ bind :
       "$parseDate"          : "{= $$.asDate('dd/MM/yyyy|dd-MM-yyyy|yyyy-MM-dd|yyyy/MM/dd|yyyyMMdd|dd-MMM-yyyy|MMM-dd-yyyy|dd-MMM-yy|MMM-dd-yy','xsd:date')}"
       "$extractDate"   : "{= $$.asDate('dd/MM/yyyy|dd-MM-yyyy|yyyy-MM-dd|yyyy/MM/dd|dd/MM/yyyy HH:mm:ss|dd-MM-yyyy HH:mm:ss|yyyy-MM-dd HH:mm:ss|yyyy/MM/dd HH:mm:ss','xsd:dateTime').format('yyyy-MM-dd')}"
       "$extractTime"   : "{= $$.asDate('HH:mm:ss|dd/MM/yyyy HH:mm:ss|dd-MM-yyyy HH:mm:ss|yyyy-MM-dd HH:mm:ss|yyyy/MM/dd HH:mm:ss','xsd:dateTime').format('HH:mm:ss')}"
-
+     
     - "$bw"                           : "<{$bwspid.map('bwq-sp-to-bw')}>"
       "$bwLabel"                      : "{$bwspid.map('bwq-sp-to-bw','label',true)}"
-      "$compliance_base"              : "{$data_base}/compliance/rbwd"
+      "$compliance_base"              : "{$data_base}/compliance-rBWD"
       "$stepChangeDataset"            : "<{$data_base}/step-change>"
       "$bodyStepChangeDataset"        : "<{$data_base}/{$body_slug}/step-change>"
       "$incrementalStepChangeDataset" : "<{$data_base}/{$body_slug}/step-change/dataset-increment/{$filebasename}>"
       "$dateOfChange"                 : "{$parseDate.apply(step_change_date)}"
-
+     
     - "$stepChange"                   : "{$data_base}/step-change/point/{$bwspid}/date/{$dateOfChange.format('yyyyMMdd')}"
-
+    
 ############################################################################################################
 # Temporary Map source for mapping sampling-point codes to bathing water URI
 ############################################################################################################
 
 #sources :
-###############################################################################
-# Source for testing only, replace in live service
-###############################################################################
-#  - name       : 'sp-to-bw' 
+################################################################################
+## Source for testing only, replace in live service
+################################################################################
+#  - name       : 'bwq-sp-to-bw' 
 #    sourceType : RDFSparql
 #    source     : transform/map/sites.ttl
 #    query      : >
@@ -67,7 +74,7 @@ bind :
 #               BIND(str(?eubwidT) AS ?eubwid)
 #               FILTER( lang(?label) = 'en' )
 #             }
-
+#               
 #  - name       : region
 #    sourceType : CSV
 #    source     : transform/map/ea-region.csv
@@ -76,7 +83,7 @@ bind :
 
 templates : 
   - bwq-stepchange
-
+      
 oneOffs    : 
 ############################################################################################################
 # Link Step Change Dataset to top level BWQ dataset
