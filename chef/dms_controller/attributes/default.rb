@@ -21,7 +21,7 @@ node.override['dms_controller']['monitor_LBs']    = ''
 node.override['dms_controller']['grafana_dashboards'] = ['dms']
 
 # Baseline data and media
-node.override['dms_controller']['testing_baseline_images']    = [ 'wales-baseline-2014-10-02.tgz' ]
+node.override['dms_controller']['testing_baseline_images']    = [ 'wales-baseline-2014-10-02.tgz', 'wales-baseline-2014-10-02.nq.gz' ]
 node.override['dms_controller']['testing_web_snapshot']       = 'wales-web-media-2014-10-27.tgz'
-node.override['dms_controller']['production_baseline_images'] = [ 'wales-baseline-2014-10-02.tgz' ]
+node.override['dms_controller']['production_baseline_images'] = [ 'wales-baseline-2014-10-02.tgz', 'wales-baseline-2014-10-02.nq.gz'  ]
 node.override['dms_controller']['production_web_snapshot']    = 'wales-web-media-2014-10-27.tgz'
