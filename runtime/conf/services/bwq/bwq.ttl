@@ -37,8 +37,8 @@
     dms:dataConverter "bwq-compliance-assessment";
     dms:postPublishScript "bwq/updates/inseason-rebuild.ru";
     dms:updatePolicy dms:series;
-    dms:sourcePublishDir  "sources/nrw/input";
-    dms:dataPublishDir    "sources/nrw/output";
+    dms:sourcePublishDir  "sources/bwq/nrw/input";
+    dms:dataPublishDir    "sources/bwq/nrw/output";
     .
 
 :inseason a dms:DataComponent;
@@ -49,8 +49,8 @@
     dms:dataConverter "bwq-in-season-assessment";
     dms:postPublishScript "bwq/updates/inseason-rebuild.ru";
     dms:updatePolicy dms:series;
-    dms:sourcePublishDir  "sources/nrw/input";
-    dms:dataPublishDir    "sources/nrw/output";
+    dms:sourcePublishDir  "sources/bwq/nrw/input";
+    dms:dataPublishDir    "sources/bwq/nrw/output";
     .
 
 :revised-annual a dms:DataComponent;
@@ -61,8 +61,8 @@
     dms:dataConverter "rbwd-compliance-assessment";
     dms:postPublishScript "bwq/updates/inseason-rebuild.ru";
     dms:updatePolicy dms:series;
-    dms:sourcePublishDir  "sources/nrw/input";
-    dms:dataPublishDir    "sources/nrw/output";
+    dms:sourcePublishDir  "sources/bwq/nrw/input";
+    dms:dataPublishDir    "sources/bwq/nrw/output";
     .
 
 :revised-inseason a dms:DataComponent;
@@ -73,8 +73,8 @@
     dms:dataConverter "rbwd-in-season-assessment";
     dms:postPublishScript "bwq/updates/inseason-rebuild.ru";
     dms:updatePolicy dms:series;
-    dms:sourcePublishDir  "sources/nrw/input";
-    dms:dataPublishDir    "sources/nrw/output";
+    dms:sourcePublishDir  "sources/bwq/nrw/input";
+    dms:dataPublishDir    "sources/bwq/nrw/output";
     .
 
 :reference a dms:DataComponent;
@@ -85,8 +85,8 @@
     dms:dataConverter "bwq-sites";
     dms:updatePolicy dms:single;
     dms:asMapSource  "bwq-sp-to-bw";
-    dms:sourcePublishDir  "sources/nrw/input";
-    dms:dataPublishDir    "sources/nrw/output";
+    dms:sourcePublishDir  "sources/bwq/nrw/input";
+    dms:dataPublishDir    "sources/bwq/nrw/output";
     .
 
 :profiles a dms:DataComponent;
@@ -117,8 +117,8 @@
     dms:dataConverter "bwq-suspension-of-monitoring";
     dms:postPublishScript "bwq/updates/som-rebuild.ru";
     dms:updatePolicy dms:series;
-    dms:sourcePublishDir  "sources/nrw/input";
-    dms:dataPublishDir    "sources/nrw/output";
+    dms:sourcePublishDir  "sources/bwq/nrw/input";
+    dms:dataPublishDir    "sources/bwq/nrw/output";
     .
 
 :forecasts a dms:DataComponent;
@@ -129,8 +129,8 @@
     dms:dataConverter "bwq-short-term-pollution-risk-prediction";
     dms:postPublishScript "bwq/updates/stp-rebuild.ru";
     dms:updatePolicy dms:series;
-    dms:sourcePublishDir  "sources/nrw/input";
-    dms:dataPublishDir    "sources/nrw/output";
+    dms:sourcePublishDir  "sources/bwq/nrw/input";
+    dms:dataPublishDir    "sources/bwq/nrw/output";
     .
 
 :vocabularies a dms:DataComponent;
