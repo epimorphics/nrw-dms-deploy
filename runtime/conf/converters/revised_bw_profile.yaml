@@ -160,7 +160,7 @@ oneOffs :
     - "@id"                    : "<{$void_profiles}>"
       "<rdf:type>"             : "<void:Dataset>"
       "<rdfs:label>"           : "Profiles for bathing waters monitored by Natural Resources Wales.@en"
-      "<dct:description>"      : "Dataset of profiles for bathing waters monitered by Natural Resources Wales.@en"
+      "<dct:description>"      : "Dataset of profiles for bathing waters monitored by Natural Resources Wales.@en"
       "<dct:license>"          : "<http://reference.data.gov.uk/id/open-government-licence>"
       "<dct:modified>"         : "{$pubDateTime}"
       "<dct:source>"           : "<{$infile}>"
