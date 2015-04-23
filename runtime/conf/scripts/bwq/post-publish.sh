@@ -19,7 +19,7 @@ do
         FLAGS="$SSH_FLAGS -i $AWS_KEY"
         echo "Sync to $server"
         IP=$( jq -r .address "$server/config.json" )
-        rsync -a --delete -e "ssh $FLAGS" * ubuntu@$IP:/var/www/environment/html
+        rsync -a --delete -e "ssh $FLAGS" * ubuntu@$IP:/var/www/environment-nrw/html/wales/bathing-waters
 
         echo "Clear caches"
         ssh -t -t $FLAGS -l ubuntu $IP sudo /usr/local/bin/ps_cache_clean 
