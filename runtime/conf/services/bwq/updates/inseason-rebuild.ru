@@ -74,11 +74,11 @@ INSERT { GRAPH ugraph:in-season {
 
 # Clean out 'latest' slice'
 DELETE { GRAPH ugraph:in-season {
-   <http://environment.data.gov.uk/data/bathing-water-quality/in-season/slice/latest> qb:observation ?o .
+   <http://environment.data.gov.uk/wales/bathing-waters/data/bathing-water-quality/in-season/slice/latest> qb:observation ?o .
 #   ?bw bwq:latestSampleAssessment ?o .
 } }
 WHERE  {
-   <http://environment.data.gov.uk/data/bathing-water-quality/in-season/slice/latest> qb:observation ?o .
+   <http://environment.data.gov.uk/wales/bathing-waters/data/bathing-water-quality/in-season/slice/latest> qb:observation ?o .
 #   OPTIONAL { ?o bwq:bathingWater ?bw }
 } ;
 
@@ -90,15 +90,15 @@ DELETE { GRAPH ugraph:in-season {
 } ;
 
 INSERT DATA { GRAPH ugraph:in-season {
-    <http://environment.data.gov.uk/data/bathing-water-quality/in-season/slice/latest> 
-            rdf:type   <http://environment.data.gov.uk/data/bathing-water-quality/LatestSampleSlice>;
+    <http://environment.data.gov.uk/wales/bathing-waters/data/bathing-water-quality/in-season/slice/latest> 
+            rdf:type   <http://environment.data.gov.uk/wales/bathing-waters/data/bathing-water-quality/LatestSampleSlice>;
             rdfs:label  "Latest in-season sample assessments pseudo slice."@en;
             .
 } } ;
 
 # Reconstruct 'latest' for 2010 data with no 2011 values
 INSERT { GRAPH ugraph:in-season {
-    <http://environment.data.gov.uk/data/bathing-water-quality/in-season/slice/latest> qb:observation ?o .
+    <http://environment.data.gov.uk/wales/bathing-waters/data/bathing-water-quality/in-season/slice/latest> qb:observation ?o .
     ?bw bwq:latestSampleAssessment ?o .
 } }
 WHERE {
