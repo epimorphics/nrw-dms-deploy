@@ -21,7 +21,7 @@
 :bwq a dms:DataService;
     rdfs:label "Bathing water quality"@en;
     rdfs:comment "Data service providing information on bathing water profiles, in-season measurements, annual assesments and associated events and forecasts"@en;
-    skos:notation "bwq";
+    skos:notation "nrwbwq";
     dms:defaultPublicationSet :production;
     dms:publicationSet :production, :testing;
     dms:notifyUser "dave@epimorphics.com";
