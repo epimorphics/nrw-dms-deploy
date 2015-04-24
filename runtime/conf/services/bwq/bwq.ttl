@@ -41,17 +41,17 @@
     dms:dataPublishDir    "sources/output";
     .
 
-:inseason a dms:DataComponent;
-    rdfs:label "Non-revised In-season samples"@en;
-    rdfs:comment "Data cube describing historic and current in-season Bathing Water quality samples. Converter for old style pre-rBWD files, probably no longer needed."@en;
-    skos:notation "in-season";
-    dct:isPartOf :bwq;
-    dms:dataConverter "bwq-in-season-assessment";
-    dms:postPublishScript "bwq/updates/inseason-rebuild.ru";
-    dms:updatePolicy dms:series;
-    dms:sourcePublishDir  "sources/input";
-    dms:dataPublishDir    "sources/output";
-    .
+#:inseason a dms:DataComponent;
+#    rdfs:label "Non-revised In-season samples"@en;
+#    rdfs:comment "Data cube describing historic and current in-season Bathing Water quality samples. Converter for old style pre-rBWD files, probably no longer needed."@en;
+#    skos:notation "in-season";
+#    dct:isPartOf :bwq;
+#    dms:dataConverter "bwq-in-season-assessment";
+#    dms:postPublishScript "bwq/updates/inseason-rebuild.ru";
+#    dms:updatePolicy dms:series;
+#    dms:sourcePublishDir  "sources/input";
+#    dms:dataPublishDir    "sources/output";
+#    .
 
 :revised-annual a dms:DataComponent;
     rdfs:label "RBWD Annual assessments"@en;
