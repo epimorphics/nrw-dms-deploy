@@ -33,7 +33,7 @@
     "bind" : [
         {
 #            "$source_base"        : "http://environment.data.gov.uk/sources/bwq",
-            "$source_base"        : "http://environment.data.gov.uk/wales/bathing-waters/sources/bwq",
+            "$source_base"        : "http://environment.data.gov.uk/wales/bathing-waters/sources",
 #            "$data_base"          : "http://environment.data.gov.uk/data/bathing-water-quality",
             "$data_base"          : "http://environment.data.gov.uk/wales/bathing-waters/data/bathing-water-quality",
 #            "$body_slug"          : "eaew",
@@ -187,8 +187,8 @@
 ##################################################################################################################################
 # @@ TODO finalise source and dump filenames
 ##################################################################################################################################
-        "<void:dataDump>"       : "<{$source_base}/{$body_slug}/output/{$filebasename}-{$pubDateTime}>",
-        "<dct:source>"          : "<{$source_base}/{$body_slug}/input/{$filename}",
+        "<void:dataDump>"       : "<{$source_base}/output/{$filebasename}-{$pubDateTime}>",
+        "<dct:source>"          : "<{$source_base}/input/{$filename}",
         "<void:sparqlEndpoint>" : "<http://environment.data.gov.uk/sparql/bwq/query>"
        }
     ],
@@ -252,7 +252,7 @@
                                                     qualitycode == '13' || 
                                                     qualitycode == '14' || 
                                                     qualitycode == '15' ) ? 'def-bwq:projected-assessment' : 'def-bwq:actual-assessment' }>",
-        "<dct:source>"                         : "<{$source_base}/{$body_slug}/input/{$filename}#row={value($row.number+1).format('%06d')}>",
+        "<dct:source>"                         : "<{$source_base}/input/{$filename}#row={value($row.number+1).format('%06d')}>",
         "<def-bwq:intestinalEnterococciStats>" : "<{( (!empty(number_of_samples) && number_of_samples.value > 0)  ||
                                                       !empty(minie)     || !empty(maxie)         || !empty(meanie)      || 
                                                       !empty(stdevie)   || !empty(meanoflog10ie) || !empty(sdoflog10ie) || 

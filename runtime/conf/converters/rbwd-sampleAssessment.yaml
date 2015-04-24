@@ -41,7 +41,7 @@
         },
         {
 #            "$source_base"        : "http://environment.data.gov.uk/sources/bwq",
-            "$source_base"        : "http://environment.data.gov.uk/wales/bathing-waters/sources/bwq",
+            "$source_base"        : "http://environment.data.gov.uk/wales/bathing-waters/sources",
 #            "$data_base"          : "http://environment.data.gov.uk/data/bathing-water-quality",
             "$data_base"          : "http://environment.data.gov.uk/wales/bathing-waters/data/bathing-water-quality",
 #            "$body_slug"          : "eaew",
@@ -172,7 +172,7 @@
  ################################################################################################################################
  # @@TODO check dumpfile location
  ################################################################################################################################
-         "<void:dataDump>"      :     "<{$source_base}/{$body_slug}/output/{$filebasename}.ttl>"
+         "<void:dataDump>"      :     "<{$source_base}/output/{$filebasename}.ttl>"
        }
     ],
     "templates" : [ "rbwd-sample-assessment",
@@ -202,7 +202,7 @@
         "<def-bwq:sampleClassification>"     : "<{(year.asNumber().value < 2012) ? $def_bwq.append('/').append(qualitycode) : 
                                                   (year.asNumber().value < 2015) ? $def_bwq_cc_2012.append('/').append(qualitycode) : null}>",
         "<qb:dataSet>"                       : "<{$bodyInSeasonDataset}>",
-        "<dct:source>"                       : "<{$source_base}/{$body_slug}/input/{$filename}#row={value($row.number+1).format('%06d')}>",
+        "<dct:source>"                       : "<{$source_base}/input/{$filename}#row={value($row.number+1).format('%06d')}>",
         "<def-bwq:recordStatus>"             : "<{$status.apply(status)}>",
         "<def-bwq:recordDate>"               : "{$l_recordDate}",
         "<dct:created>"                      : "{ status.toLowerCase() == 'new'    || status.toLowerCase() == 'baseline' ? $l_recordDate : null}",

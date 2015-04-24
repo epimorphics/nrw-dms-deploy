@@ -20,7 +20,7 @@
     "bind" : [
         {
 #            "$source_base"        : "http://environment.data.gov.uk/sources/bwq",
-            "$source_base"        : "http://environment.data.gov.uk/wales/bathing-waters/sources/bwq",
+            "$source_base"        : "http://environment.data.gov.uk/wales/bathing-waters/sources",
 #            "$data_base"          : "http://environment.data.gov.uk/data/bathing-water-quality",
             "$data_base"          : "http://environment.data.gov.uk/wales/bathing-waters/data/bathing-water-quality",
 #            "$body_slug"          : "eaew",
@@ -128,7 +128,8 @@
                                    "<{$ns.apply('qb:')    }>" ],
          "<dct:modified>"    : "{$pubDateTime}",
 # @@TODO 3: rationalise dump file name
-         "<void:dataDump>"   : "<{$source_base}/{$body_slug}/output/{$filebasename}-{$pubDateTime}.ttl>"
+#         "<void:dataDump>"   : "<{$source_base}/output/{$filebasename}-{$pubDateTime}.ttl>"
+         "<void:dataDump>"   : "<{$source_base}/output/{$filebasename}.ttl>"
        }         
     ],
  ##########################################################################################################
@@ -152,7 +153,7 @@
          "<rdfs:comment>"         : [ "{(prediction_text_en ==null)? null : prediction_text_en.lang('en')}", 
                                       "{(prediction_text_cy==null) ? null : prediction_text_cy.lang('cy')}" ],         
  # @@TODO 4: check source file referencing
-         "<dct:source>"           : "<{$source_base}/{$body_slug}/input/{$filename}#row={value($row.number+1).format('%04d')}>",
+         "<dct:source>"           : "<{$source_base}/input/{$filename}#row={value($row.number+1).format('%04d')}>",
          "<qb:dataSet>"           : [ "<{$stpDataset}>", "<{$bodyStpDataset}>" ],
          "^<def-stp:latestRiskPrediction>" : "{$bathing_water}"
        }

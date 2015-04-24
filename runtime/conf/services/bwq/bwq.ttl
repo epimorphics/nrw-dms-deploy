@@ -37,20 +37,20 @@
     dms:dataConverter "bwq-compliance-assessment";
     dms:postPublishScript "bwq/updates/inseason-rebuild.ru";
     dms:updatePolicy dms:series;
-    dms:sourcePublishDir  "sources/bwq/nrw/input";
-    dms:dataPublishDir    "sources/bwq/nrw/output";
+    dms:sourcePublishDir  "sources/input";
+    dms:dataPublishDir    "sources/output";
     .
 
 :inseason a dms:DataComponent;
-    rdfs:label "In-season samples"@en;
-    rdfs:comment "Data cube describing historic and current in-season Bathing Water quality samples."@en;
+    rdfs:label "Non-revised In-season samples"@en;
+    rdfs:comment "Data cube describing historic and current in-season Bathing Water quality samples. Converter for old style pre-rBWD files, probably no longer needed."@en;
     skos:notation "in-season";
     dct:isPartOf :bwq;
     dms:dataConverter "bwq-in-season-assessment";
     dms:postPublishScript "bwq/updates/inseason-rebuild.ru";
     dms:updatePolicy dms:series;
-    dms:sourcePublishDir  "sources/bwq/nrw/input";
-    dms:dataPublishDir    "sources/bwq/nrw/output";
+    dms:sourcePublishDir  "sources/input";
+    dms:dataPublishDir    "sources/output";
     .
 
 :revised-annual a dms:DataComponent;
@@ -61,8 +61,8 @@
     dms:dataConverter "rbwd-compliance-assessment";
     dms:postPublishScript "bwq/updates/inseason-rebuild.ru";
     dms:updatePolicy dms:series;
-    dms:sourcePublishDir  "sources/bwq/nrw/input";
-    dms:dataPublishDir    "sources/bwq/nrw/output";
+    dms:sourcePublishDir  "sources/input";
+    dms:dataPublishDir    "sources/output";
     .
 
 :revised-inseason a dms:DataComponent;
@@ -73,8 +73,8 @@
     dms:dataConverter "rbwd-in-season-assessment";
     dms:postPublishScript "bwq/updates/inseason-rebuild.ru";
     dms:updatePolicy dms:series;
-    dms:sourcePublishDir  "sources/bwq/nrw/input";
-    dms:dataPublishDir    "sources/bwq/nrw/output";
+    dms:sourcePublishDir  "sources/input";
+    dms:dataPublishDir    "sources/output";
     .
 
 :reference a dms:DataComponent;
@@ -85,8 +85,8 @@
     dms:dataConverter "bwq-sites";
     dms:updatePolicy dms:single;
     dms:asMapSource  "bwq-sp-to-bw";
-    dms:sourcePublishDir  "sources/bwq/nrw/input";
-    dms:dataPublishDir    "sources/bwq/nrw/output";
+    dms:sourcePublishDir  "sources/input";
+    dms:dataPublishDir    "sources/output";
     .
 
 :profiles a dms:DataComponent;
@@ -98,6 +98,8 @@
     dms:dataConverter "revised-bwq-profile";
     dms:postPublishScript "bwq/updates/profile-rebuild.ru";
     dms:updatePolicy dms:series;
+    dms:sourcePublishDir  "sources/input";
+    dms:dataPublishDir    "sources/output";
     .
 
 :features a dms:DataComponent;
@@ -107,6 +109,8 @@
     dct:isPartOf :bwq;
     dms:dataConverter "bwq-profile-feature";
     dms:updatePolicy dms:series;
+    dms:sourcePublishDir  "sources/input";
+    dms:dataPublishDir    "sources/output";
     .
 
 :suspensions a dms:DataComponent;
@@ -117,8 +121,8 @@
     dms:dataConverter "bwq-suspension-of-monitoring";
     dms:postPublishScript "bwq/updates/som-rebuild.ru";
     dms:updatePolicy dms:series;
-    dms:sourcePublishDir  "sources/bwq/nrw/input";
-    dms:dataPublishDir    "sources/bwq/nrw/output";
+    dms:sourcePublishDir  "sources/input";
+    dms:dataPublishDir    "sources/output";
     .
 
 :forecasts a dms:DataComponent;
@@ -129,8 +133,8 @@
     dms:dataConverter "bwq-short-term-pollution-risk-prediction";
     dms:postPublishScript "bwq/updates/stp-rebuild.ru";
     dms:updatePolicy dms:series;
-    dms:sourcePublishDir  "sources/bwq/nrw/input";
-    dms:dataPublishDir    "sources/bwq/nrw/output";
+    dms:sourcePublishDir  "sources/input";
+    dms:dataPublishDir    "sources/output";
     .
 
 :vocabularies a dms:DataComponent;
@@ -150,14 +154,6 @@
     dct:isPartOf :bwq;
     dms:dataConverter "bwq-step-change";
     dms:updatePolicy dms:series;
-    .
-
-:testData a dms:DataComponent;
-    rdfs:label "Test data"@en;
-    rdfs:comment "RDF files uploaded for test purposes only, not for production use."@en;
-    skos:notation "testdata";
-    dct:isPartOf :bwq;
-    dms:updatePolicy dms:multiple;
     .
 
 # -- Publication sets --------------------------------

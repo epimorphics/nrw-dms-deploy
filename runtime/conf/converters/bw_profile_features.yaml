@@ -24,7 +24,7 @@ requiredColumns :
 
 bind :
 #  - "$source_base"        : "http://environment.data.gov.uk/sources/bwq"
-  - "$source_base"        : "http://environment.data.gov.uk/wales/bathing-waters/sources/bwq"
+  - "$source_base"        : "http://environment.data.gov.uk/wales/bathing-waters/sources"
 #    "$data_base"          : "http://location.data.gov.uk/so/ef/BathingWaterProfileFeature"
     "$data_base"          : "http://environment.data.gov.uk/wales/bathing-waters/so/BathingWaterProfileFeature"
 #    "$body_slug"          : "eaew"
@@ -36,8 +36,8 @@ bind :
     "$defaultYear"        : "2011"
 
   - "$eubwid"             : "{$sp.map('bwq-sp-to-bw', 'eubwid', true)}"
-    "$outfile"            : "{$source_base}/{$body_slug}/output/{$filestub}.ttl"
-    "$infile"             : "{$source_base}/{$body_slug}/input/{$filename}"
+    "$outfile"            : "{$source_base}/output/{$filestub}.ttl"
+    "$infile"             : "{$source_base}/input/{$filename}"
 #    "$datasetURI"         : "{$data_base}/bwpf.{$body_slug}/"
     "$datasetURI"         : "{$data_base}/"
 

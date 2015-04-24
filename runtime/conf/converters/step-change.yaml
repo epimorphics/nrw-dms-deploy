@@ -12,7 +12,7 @@ bind :
 # URI and slugs
 #####################################################################################################################
 #    - "$source_base"   : "http://environment.data.gov.uk/sources/bwq"
-    - "$source_base"   : "http://environment.data.gov.uk/wales/bathing-waters/sources/bwq"
+    - "$source_base"   : "http://environment.data.gov.uk/wales/bathing-waters/sources"
 #      "$data_base"     : "http://environment.data.gov.uk/data/bathing-water-quality"
       "$data_base"     : "http://environment.data.gov.uk/wales/bathing-waters/data/bathing-water-quality"
 #      "$body_slug"     : "eaew"
@@ -142,8 +142,8 @@ oneOffs    :
       "<dct:license>"                    : "<http://reference.data.gov.uk/id/open-government-licence>"
       "<dct:publisher>"                  : "<{$body_org}>"
       # Added dct:source to align with practice with other dataset subsets
-      "<dct:source>"                     : "<{$source_base}/{$body_slug}/input/{$filename}>"
-      "<void:dataDump>"                  : "<{$source_base}/{$body_slug}/output/{$filebasename}.ttl>"
+      "<dct:source>"                     : "<{$source_base}/input/{$filename}>"
+      "<void:dataDump>"                  : "<{$source_base}/output/{$filebasename}.ttl>"
       "<void:sparqlEndpoint>"            : "<http://environment.data.gov.uk/sparql/bwq/query>"
       "<void:vocabulary>" : 
           - "<{$ns.apply('def-bwq:')}>"
@@ -160,7 +160,7 @@ referenced :
       "@id"                               :  "<{$stepChange}>"
       "<rdf:type>"                        :  "<def-bwq:StepChange>"
       "<rdfs:label>"                      : "Step Change on {$dateOfChange.format('dd MMM yyyy')} at {$bwLabel}@en"
-      "<dct:source>"                      : "<{$source_base}/{$body_slug}/input/{$filename}#row={value($row.number+1).format('%06d')}>"
+      "<dct:source>"                      : "<{$source_base}/input/{$filename}#row={value($row.number+1).format('%06d')}>"
       "<def-bw:bathingWater>"             : "<{$bw}>"
       "<def-sp:samplingPoint>"            : "<{$so_sp}/{$bwspid}>"
       "<def-bwq:dateOfChange>"            : "{$dateOfChange}"
