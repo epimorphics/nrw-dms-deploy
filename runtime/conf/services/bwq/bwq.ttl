@@ -30,7 +30,7 @@
 # -- Data components --------------------------------
 
 :annual a dms:DataComponent;
-    rdfs:label "Annual assessments"@en;
+    rdfs:label "Pre rBWD Annual assessments"@en;
     rdfs:comment "Data cube describing historic and current annual Bathing Water quality assessments."@en;
     skos:notation "annual";
     dct:isPartOf :bwq;
