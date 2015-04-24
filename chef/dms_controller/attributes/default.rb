@@ -18,7 +18,7 @@ node.override['dms_controller']['conf_repo']     = "https://github.com/epimorphi
 node.override['dms_controller']['monitor_LBs']    = 'nrwbwq-producti-dataserv-LB nrwbwq-producti-presServ-LB'
 
 # The grafana dashboards to install, each name should correspond to a file "grafana-dashboard-{name}.json"
-node.override['dms_controller']['grafana_dashboards'] = ['dms']
+node.override['dms_controller']['grafana_dashboards'] = ['dms', 'nrwbwq-production']
 
 # Baseline data and media
 node.override['dms_controller']['baseline']['nrwbwq']['testing_baseline_images']    = [ 'wales-baseline-2014-10-02.tgz', 'wales-baseline-2014-10-02.nq.gz' ]
