@@ -236,9 +236,8 @@
          "<def-som:expectedEndOfSuspension>" : "{$l_expectedEndOfSuspension}",
          "<def-som:recordDateTime>"          : "{$l_recordDateTime}",
 # Narrative fields
-         "<dct:description>"                 : "{situation_description}@en",
-         "<rdfs:comment>"                    : "{additional_comments}@en"
-
+         "<dct:description>"                 : ["{situation_description}@en", "{w_situation_description}@cy"],
+         "<rdfs:comment>"                    : ["{additional_comments}@en" , "{w_additional_comments}@cy" ]        
       }
    ]
 }
