@@ -279,13 +279,13 @@
 # -- Base images --------------------------------
 
 :productionBaseline a dms:image;
-    dms:dumpFile   "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-02.nq.gz";
-    dms:dbLocation "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-02.tgz";
-    dms:effectiveDate "2014-10-02T10:18:00Z"^^xsd:dateTime;
+    dms:dumpFile   "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-31.nq.gz";
+    dms:dbLocation "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-31.tgz";
+    dms:effectiveDate "2014-10-31T00:00:00Z"^^xsd:dateTime;
     .
 
 :testBaseline a dms:image;
-    dms:dumpFile   "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-02.nq.gz";
-    dms:dbLocation "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-02.tgz";
-    dms:effectiveDate "2014-10-02T10:18:00Z"^^xsd:dateTime;
+    dms:dumpFile   "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-31.nq.gz";
+    dms:dbLocation "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-31.tgz";
+    dms:effectiveDate "2014-10-31T00:00:00Z"^^xsd:dateTime;
     .
