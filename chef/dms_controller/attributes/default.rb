@@ -21,7 +21,7 @@ node.override['dms_controller']['monitor_LBs']    = 'nrwbwq-producti-dataserv-LB
 node.override['dms_controller']['grafana_dashboards'] = ['dms', 'nrwbwq-production']
 
 # Baseline data and media
-node.override['dms_controller']['baseline']['nrwbwq']['testing_baseline_images']    = [ 'wales-baseline-2014-10-02.tgz', 'wales-baseline-2014-10-02.nq.gz' ]
+node.override['dms_controller']['baseline']['nrwbwq']['testing_baseline_images']    = [ 'wales-baseline-2014-10-31.tgz', 'wales-baseline-2014-10-31.nq.gz' ]
 node.override['dms_controller']['baseline']['nrwbwq']['testing_web_snapshot']       = 'wales-web-media-2014-10-27.tgz'
-node.override['dms_controller']['baseline']['nrwbwq']['production_baseline_images'] = [ 'wales-baseline-2014-10-02.tgz', 'wales-baseline-2014-10-02.nq.gz'  ]
+node.override['dms_controller']['baseline']['nrwbwq']['production_baseline_images'] = [ 'wales-baseline-2014-10-31.tgz', 'wales-baseline-2014-10-31.nq.gz'  ]
 node.override['dms_controller']['baseline']['nrwbwq']['production_web_snapshot']    = 'wales-web-media-2014-10-27.tgz'
