@@ -164,7 +164,7 @@ referenced :
       "<def-bw:bathingWater>"             : "<{$bw}>"
       "<def-sp:samplingPoint>"            : "<{$so_sp}/{$bwspid}>"
       "<def-bwq:dateOfChange>"            : "{$dateOfChange}"
-      "<rdfs:comment>"                    : "{changes}@en"
+      "<rdfs:comment>"                    : [ "{changes}@en", "{w_changes}@cy" ]
 ############################################################################################################
 # These two might need revisiting as they are likely to be furture projections. ie. at least some of the 
 # affected assessments # don't yet exist and the respective URI will 404
