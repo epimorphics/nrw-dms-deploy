@@ -154,6 +154,8 @@
     dct:isPartOf :bwq;
     dms:dataConverter "bwq-step-change";
     dms:updatePolicy dms:series;
+    dms:sourcePublishDir  "sources/input";
+    dms:dataPublishDir    "sources/output";
     .
 
 # -- Publication sets --------------------------------
