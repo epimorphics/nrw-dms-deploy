@@ -252,7 +252,7 @@
     dms:tierRole "presentationServers";
 #    dms:loadBalancer  :tPresLB;
     dms:configureAction "bwq/presserver/configure";
-    dms:allocateAction "bwq/pres-testing-server/allocate";
+    dms:allocateAction "bwq/pres-testing/allocate";
     dms:terminateAction "bwq/presserver/terminate";
     dms:operation :clearCacheOp, :webSyncOp;
     .    
