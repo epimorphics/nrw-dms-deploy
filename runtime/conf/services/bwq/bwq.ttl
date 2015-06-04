@@ -164,7 +164,7 @@
     skos:notation "patches";
     dct:isPartOf :bwq;
     dms:updatePolicy dms:single;
-    dms:postPublishScript "bwq/updates/laglongfix.ru";
+    dms:postPublishScript "bwq/updates/latlongfix.ru";
     .
 
 # -- Publication sets --------------------------------
