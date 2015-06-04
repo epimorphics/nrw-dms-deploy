@@ -158,6 +158,15 @@
     dms:dataPublishDir    "sources/output";
     .
 
+:patches a dms:DataComponent;
+    rdfs:label "XX Patches"@en;
+    rdfs:comment "Data patches to correct stray entries in baseline dataset."@en;
+    skos:notation "patches";
+    dct:isPartOf :bwq;
+    dms:updatePolicy dms:single;
+    dms:postPublishScript "bwq/updates/laglongfix.ru";
+    .
+
 # -- Publication sets --------------------------------
 
 :production a dms:PublicationSet;
@@ -281,13 +290,17 @@
 # -- Base images --------------------------------
 
 :productionBaseline a dms:image;
-    dms:dumpFile   "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-31.nq.gz";
-    dms:dbLocation "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-31.tgz";
+#    dms:dumpFile   "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-31.nq.gz";
+#    dms:dbLocation "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-31.tgz";
+    dms:dumpFile   "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-31-latlongfix.nq.gz";
+    dms:dbLocation "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-31-latlongfix.tgz";
     dms:effectiveDate "2014-10-31T00:00:00Z"^^xsd:dateTime;
     .
 
 :testBaseline a dms:image;
-    dms:dumpFile   "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-31.nq.gz";
-    dms:dbLocation "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-31.tgz";
+#    dms:dumpFile   "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-31.nq.gz";
+#    dms:dbLocation "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-31.tgz";
+    dms:dumpFile   "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-31-latlongfix.nq.gz";
+    dms:dbLocation "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-31-latlongfix.tgz";
     dms:effectiveDate "2014-10-31T00:00:00Z"^^xsd:dateTime;
     .
