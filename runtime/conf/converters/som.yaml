@@ -10,10 +10,10 @@
 #      "end_date",
 #      "end_time",
       "region",
-      "bathing_water",
+#      "bathing_water",
       "bw_ref",
       "situation_description",
-      "additional_comments",
+#      "additional_comments",
 #      "nirs_ref"
    ],
     "bind" : [
