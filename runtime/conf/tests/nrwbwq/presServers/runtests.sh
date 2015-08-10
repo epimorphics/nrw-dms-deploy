@@ -15,14 +15,14 @@ check() {
     local RESULT=$2
     local LIMIT=$3
     echo "Checking $NAME"
-    if (( $RESULT < $LIMIT )); then
+    if [[ $RESULT -lt $LIMIT ]]; then
         echo "Failed, testing for: $NAME"
         exit 1
     fi
 }
 
-check "Elda running" $(curl -s -H "Host: localhost" http://$IP/doc/bathing-water.json?_pageSize=5 | jq -r ".result.items | length") 5 
+check "Elda running" $(curl -s -H "Host: localhost" http://$IP/wales/bathing-waters/doc/bathing-water.json?_pageSize=5 | jq -r ".result.items | length") 5 
 
-check "Landing page non-trivial" $(curl -s -H "Host: localhost" http://$IP/bwq/profiles/ | grep "<div" | wc -l ) 10 
+check "Landing page non-trivial" $(curl -s -H "Host: localhost" http://$IP/wales/bathing-waters/profiles/ | grep "<div" | wc -l ) 10 
 
-check "Widget design page non-trivial" $(curl -s -H "Host: localhost"  http://$IP/bwq/widget/design | grep "<div" | wc -l ) 10
+check "Widget design page non-trivial" $(curl -s -H "Host: localhost" -H "Accept-Language: en" http://$IP/wales/bathing-waters/widget/design | grep "<div" | wc -l ) 10
