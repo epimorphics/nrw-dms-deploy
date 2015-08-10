@@ -209,6 +209,7 @@
     dms:allocateAction "bwq/dataserver/allocate";
     dms:terminateAction "bwq/dataserver/terminate";
     dms:parallelPublish true ;
+    dms:operation :upgradeOp;
     .
 
 :pdataLB a dms:LoadBalancer;
@@ -231,6 +232,7 @@
     dms:allocateAction "bwq/dataserver/allocate";
     dms:terminateAction "bwq/dataserver/terminate";
     dms:parallelPublish true ;
+    dms:operation :upgradeOp;
     .
 
 :tdataLB a dms:LoadBalancer;
@@ -248,6 +250,7 @@
     dms:allocateAction "bwq/pres-production/allocate";
     dms:terminateAction "bwq/presserver/terminate";
     dms:operation :clearCacheOp, :webSyncOp;
+    dms:operation :upgradeOp;
     .    
 
 :pPresLB a dms:LoadBalancer;
@@ -264,6 +267,7 @@
     dms:allocateAction "bwq/pres-testing/allocate";
     dms:terminateAction "bwq/presserver/terminate";
     dms:operation :clearCacheOp, :webSyncOp;
+    dms:operation :upgradeOp;
     .    
 
 :clearCacheOp
@@ -280,6 +284,13 @@
     dms:action "bwq/webSync";
     skos:notation "webSyncOp";
     dms:tierOnly true;
+    .
+
+:upgradeOp
+    rdfs:label "Upgrade server";
+    dms:action "default/upgrade";
+    skos:notation "upgradeOp";
+    dms:removeFromLB true;
     .
 
 :tPresLB a dms:LoadBalancer;
