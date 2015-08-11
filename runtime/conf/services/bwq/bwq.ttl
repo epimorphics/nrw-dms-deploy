@@ -250,6 +250,7 @@
     dms:configureAction "bwq/presserver/configure";
     dms:allocateAction "bwq/pres-production/allocate";
     dms:terminateAction "bwq/presserver/terminate";
+    dms:activateAction "bwq/webSyncServer";
     dms:operation :clearCacheOp, :webSyncOp;
     dms:operation :upgradeOp;
     .    
@@ -267,6 +268,7 @@
     dms:configureAction "bwq/presserver/configure";
     dms:allocateAction "bwq/pres-testing/allocate";
     dms:terminateAction "bwq/presserver/terminate";
+    dms:activateAction "bwq/webSyncServer";
     dms:operation :clearCacheOp, :webSyncOp;
     dms:operation :upgradeOp;
     .    

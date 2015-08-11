@@ -173,3 +173,10 @@
 "@name"         : "bwq/convertUploadInMemory"
 "@javaclass"    : "com.epimorphics.dms.dc.ConversionAction"
 "forceInMemory" : true
+---
+# Synchronize web content - single server
+"@name" : bwq/webSyncServer
+"@type" : script
+"@script" : "bwq/web-sync-server.sh"
+"@args" :
+  - "serverDir"
