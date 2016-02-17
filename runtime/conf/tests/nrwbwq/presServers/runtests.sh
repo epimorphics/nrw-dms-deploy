@@ -20,9 +20,9 @@ check() {
 }
 
 checkAll() {
-      check "Elda running" 5 $(curl -s -H "Host: localhost" http://$IP/doc/bathing-water.json?_pageSize=5 | jq -r ".result.items | length")  \
-  &&  check "Landing page non-trivial" 10 $(curl -s -H "Host: localhost" http://$IP/bwq/profiles/ | grep "<div" | wc -l ) \
-  &&  check "Widget design page non-trivial" 10 $(curl -s -H "Host: localhost"  http://$IP/bwq/widget/design | grep "<div" | wc -l )
+      check "Elda running" 5 $(curl -s -H "Host: localhost" http://$IP/wales/doc/bathing-water.json?_pageSize=5 | jq -r ".result.items | length")  \
+  &&  check "Landing page non-trivial" 10 $(curl -s -H "Host: localhost" http://$IP/wales/bwq/profiles/ | grep "<div" | wc -l ) \
+  &&  check "Widget design page non-trivial" 10 $(curl -s -H "Host: localhost"  http://$IP/wales/bwq/widget/design | grep "<div" | wc -l )
 }
 
 sleep 5s
