@@ -21,7 +21,7 @@ ssh -t -t $SSH_FLAGS -i $AWS_KEY -l ubuntu $IP sudo apt-get $APT_FLAGS dist-upgr
 ssh -t -t $SSH_FLAGS -i $AWS_KEY -l ubuntu $IP sudo reboot
 
 # Wait for machine to come up again
-sleep 10s
+sleep 60s
 ssh -t -t $SSH_FLAGS -i $AWS_KEY -l ubuntu $IP echo "Server up"
 
 # Good luck pause to allow services to start as well
