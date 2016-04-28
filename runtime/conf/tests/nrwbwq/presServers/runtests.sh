@@ -1,28 +1,39 @@
 #!/bin/bash
 # Server tests for a BWQ presentation server
 
-set -o errexit
-set -o pipefail
-
 [[ $# = 1 ]] || { echo "Internal error calling runtests, expected server address" 1>&2 ; exit 1 ; }
 
 readonly SERVER="$1"
 readonly IP=$( jq -r .address "$SERVER/config.json" )
 
 check() {
-    [[ $# = 3 ]] || { echo "Internal error calling $0" 1>&2 ; exit 1 ; }
     local NAME=$1
-    local RESULT=$2
-    local LIMIT=$3
+    local LIMIT=$2
+    local RESULT=${3:-0}
     echo "Checking $NAME"
-    if [[ $RESULT -lt $LIMIT ]]; then
+    if (( $RESULT < $LIMIT )); then
         echo "Failed, testing for: $NAME"
-        exit 1
+        return 1
+    else
+        return 0
     fi
 }
 
-check "Elda running" $(curl -s -H "Host: localhost" http://$IP/wales/bathing-waters/doc/bathing-water.json?_pageSize=5 | jq -r ".result.items | length") 5 
+checkAll() {
+      check "Elda running" 5 $(curl -s -H "Host: localhost" http://$IP/wales/bathing-waters/doc/bathing-water.json?_pageSize=5 | jq -r ".result.items | length")  \
+  &&  check "Landing page non-trivial" 10 $(curl -s -H "Host: localhost" http://$IP/wales/bathing-waters/profiles/ | grep "<div" | wc -l ) \
+  &&  check "Widget design page non-trivial" 10 $(curl -s -H "Host: localhost"  -H "Accept-Language: en" http://$IP/wales/bathing-waters/widget/design | grep "<div" | wc -l )
+}
 
-check "Landing page non-trivial" $(curl -s -H "Host: localhost" http://$IP/wales/bathing-waters/profiles/ | grep "<div" | wc -l ) 10 
+sleep 5s
 
-check "Widget design page non-trivial" $(curl -s -H "Host: localhost" -H "Accept-Language: en" http://$IP/wales/bathing-waters/widget/design | grep "<div" | wc -l ) 10
+if ! checkAll ; then
+    echo "Failed first try, retry after wait"
+    sleep 15s
+    if ! checkAll ; then
+        echo "Failed tests"
+        exit 1
+    fi
+fi
+
+exit 0

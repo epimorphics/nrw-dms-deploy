@@ -31,14 +31,14 @@ WaitForLB() {
     local lbname=$1
     local instanceID=$2
     local target=$3
-    for i in $(seq 1 15)
+    for i in $(seq 1 30)
     do
         STATE=$(aws elb describe-instance-health --load-balancer-name $lbname --instances $instanceID | jq -r ".InstanceStates[0].State")
         echo "State is: $STATE"
         if [[ $STATE == $target ]]; then
             return 0
         fi
-        sleep 1
+        sleep 2
     done
     return 1
 }
