@@ -387,7 +387,7 @@
     {   "name" : "bwq-sites-county-labels",
         "@id"  : "<{r_county}>",
         "<rdfs:label>"     : [ "{r_county.map('bwq-os-admingeo-labels','label_en',false)}@en",
-                               "{r_county.map('bwq-os-admingeo-labels','label_cy',false)}@en"] ,
+                               "{r_county.map('bwq-os-admingeo-labels','label_cy',false)}@cy"] ,
         "<skos:prefLabel>" : [ "{r_county.map('bwq-os-admingeo-labels','prefLabel_en',false)}@en",
                                "{r_county.map('bwq-os-admingeo-labels','prefLabel_cy',false)}@cy" ]
     },
