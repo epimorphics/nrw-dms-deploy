@@ -1,0 +1,2 @@
+# Run log consolidation on 1st of month
+30 06 1 * * tomcat7 /bin/bash /opt/dms/bin/log-gen-all > /var/opt/dms/log/log-gen-all.crontab.log 2>&1

@@ -1,0 +1,17 @@
+#!/bin/bash
+# Generate consolidated log files for the last month for the main services
+set -o errexit
+
+readonly WORK_DIR=/tmp/dms-work
+
+if [[ ! -d /tmp/dms-work ]]; then
+    ln -s /mnt/ephemeral0/dms-work/ /tmp
+fi
+
+cd $WORK_DIR
+
+printf -v month "%02d" $(( 10#$(date +%m) - 1 ))
+
+/opt/dms/bin/log-gen s3://nrw-dms-deploy/logs/nrwbwq/production/presServers environment-nrw-access.log $month
+
+rm *

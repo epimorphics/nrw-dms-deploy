@@ -58,3 +58,16 @@ node['dms_controller']['baseline'].each do |service, description|
         end
     end
 end
+
+# Log consolidation support
+
+package 'awstats'
+
+user=node['dms_controller']['user'] 
+
+## log-gen scripts themselves are part of lds-deploy install
+
+cookbook_file "/etc/cron.d/log-gen" do
+    source "log-gen.crontab"
+    mode  0644
+end
