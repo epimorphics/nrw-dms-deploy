@@ -38,4 +38,4 @@ export SSH_FLAGS="-q -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHo
 
 # Location of AWS access key
 readonly AWS_KEY=~/.ssh/nrw.pem
-
+readonly AWS_KEY_ROOT=/var/opt/dms/.ssh/nrw.pem

@@ -5,7 +5,7 @@
 
 echo "[$(date -Iseconds)] Backup production apache logs to S3"
 cd /var/opt/dms
-FLAGS="$SSH_FLAGS -i $AWS_KEY"
+FLAGS="$SSH_FLAGS -i $AWS_KEY_ROOT"
 for server in services/*/publicationSets/production/tiers/*/servers/*
 do
     if [[ $server =~ services/(.*)/publicationSets/(.*)/tiers/(.*)/servers/(.*) ]]; then
