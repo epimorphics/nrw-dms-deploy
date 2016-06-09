@@ -115,11 +115,11 @@
 "@name" : api/publishTesting
 "@type" : sequence
 "@actions" :
+  - "@type"      : script
+    "@script"    : bwq/forecast-rhyl.sh
+    "@args"      : [ "filename" ]
   - "@javaclass" : com.epimorphics.dms.tasks.EmbeddedPublishAction
     "publicationSet" : testing
-#  - "@type"      : script
-#    "@script"    : bwq/prf-postprod.sh
-#    "@args"      : [ "filename" ]
   - "@javaclass" : com.epimorphics.dms.tasks.NotifyAction
     "message" :    "Publications to testing completed"
     "notifyuser" : "dave@epimorphics.com"
