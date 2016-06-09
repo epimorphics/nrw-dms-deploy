@@ -117,7 +117,7 @@
 "@actions" :
   - "@type"      : script
     "@script"    : bwq/forecast-rhyl.sh
-    "@args"      : [ "filename", "updateRecord" ]
+    "@args"      : [ "filename" ]
   - "@javaclass" : com.epimorphics.dms.tasks.EmbeddedPublishAction
     "publicationSet" : testing
   - "@javaclass" : com.epimorphics.dms.tasks.NotifyAction
