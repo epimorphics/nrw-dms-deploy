@@ -136,6 +136,9 @@
 # In season configuration below here
 "@type" : sequence
 "@actions" :
+  - "@type"      : script
+    "@script"    : bwq/forecast-rhyl.sh
+    "@args"      : [ "filename" ]
   - "@javaclass" : com.epimorphics.dms.tasks.EmbeddedPublishAction
     "publicationSet" : production
   - "@javaclass" : com.epimorphics.dms.tasks.NotifyAction
