@@ -15,9 +15,9 @@ APT_FLAGS='-o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-conf
 # Complete update
 ssh -t -t $SSH_FLAGS -i $AWS_KEY -l ubuntu $IP sudo apt-get $APT_FLAGS update
 #ssh -t -t $SSH_FLAGS -i $AWS_KEY -l ubuntu $IP sudo apt-get $APT_FLAGS upgrade
-ssh -t -t $SSH_FLAGS -i $AWS_KEY -l ubuntu $IP sudo apt-get $APT_FLAGS  DEBIAN_FRONTEND=noninteractive dist-upgrade 
+ssh -t -t $SSH_FLAGS -i $AWS_KEY -l ubuntu $IP sudo DEBIAN_FRONTEND=noninteractive apt-get $APT_FLAGS dist-upgrade 
 ssh -t -t $SSH_FLAGS -i $AWS_KEY -l ubuntu $IP sudo apt-get $APT_FLAGS autoclean
-ssh -t -t $SSH_FLAGS -i $AWS_KEY -l ubuntu $IP sudo apt-get $APT_FLAGS  DEBIAN_FRONTEND=noninteractive autoremove
+ssh -t -t $SSH_FLAGS -i $AWS_KEY -l ubuntu $IP sudo DEBIAN_FRONTEND=noninteractive apt-get $APT_FLAGS autoremove
 
 # Force a reboot to install any dist upgrades
 ssh -t -t $SSH_FLAGS -i $AWS_KEY -l ubuntu $IP sudo reboot
