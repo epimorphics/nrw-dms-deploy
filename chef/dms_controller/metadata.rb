@@ -7,3 +7,4 @@ long_description 'Installs/Configures dms_controller'
 version          '0.1.1'
 
 depends "dms_controller_base"
+depends 'epi_deploy',        '>= 0.1.0'

@@ -12,3 +12,6 @@ include_recipe "dms_controller_base"
 include_recipe "dms_controller::grafana"
 
 include_recipe "dms_controller::nrw"
+
+include_recipe "dms_controller::pubutil_war"
+include_recipe "dms_controller::pubutil_conf"

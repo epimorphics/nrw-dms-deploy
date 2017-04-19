@@ -25,3 +25,13 @@ node.override['dms_controller']['baseline']['nrwbwq']['testing_baseline_images']
 node.override['dms_controller']['baseline']['nrwbwq']['testing_web_snapshot']       = 'wales-web-media-2014-10-27.tgz'
 node.override['dms_controller']['baseline']['nrwbwq']['production_baseline_images'] = [ 'wales-baseline-2014-10-31.tgz', 'wales-baseline-2014-10-31.nq.gz'  ]
 node.override['dms_controller']['baseline']['nrwbwq']['production_web_snapshot']    = 'wales-web-media-2014-10-27.tgz'
+
+# Support for pubutil (AS out of hours)
+node.override['dms_controller']['pubutil_war_base']  = 'http://repository.epimorphics.com/com/epimorphics/pubutil-nrw/1.0.0/'
+node.override['dms_controller']['pubutil_war']       = 'pubutil-nrw-1.0.0.war'
+
+node.override['epi_deploy']['pubutil']['repo']       = 'git@codebasehq.com:epimorphics/nrw/pubutil-deploy.git'
+node.override['epi_deploy']['pubutil']['branch']     = 'master'
+node.override['epi_deploy']['pubutil']['install_to'] = '/opt/pubutil'
+node.override['epi_deploy']['pubutil']['user']       = 'tomcat7'
+node.override['epi_deploy']['pubutil']['group']      = 'tomcat7'
