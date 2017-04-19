@@ -35,3 +35,8 @@ node.override['epi_deploy']['pubutil']['branch']     = 'master'
 node.override['epi_deploy']['pubutil']['install_to'] = '/opt/pubutil'
 node.override['epi_deploy']['pubutil']['user']       = 'tomcat7'
 node.override['epi_deploy']['pubutil']['group']      = 'tomcat7'
+
+# java 8
+override['epi_java']['packages']            = [ 'openjdk-8-jre-headless' ]
+override['epi_java']['java_home']           = '/usr/lib/jvm/java-8-openjdk-amd64'
+override['epi_java']['default_alternative'] = "#{node['epi_java']['java_home']}/jre/bin/java"  
