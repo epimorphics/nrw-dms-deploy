@@ -189,7 +189,7 @@
     dms:publicationTier :testingPubServers;
     dms:tier :tPresServers;
     dms:consolidatedUpdates false;
-    dms:image  :testBaseline;
+    dms:image  :testBaseline, :test2017Snapshot;
     dms:publishAction "default/publish";
     dms:postPublishAction "bwq/postPublish";
     .
@@ -318,3 +318,8 @@
     dms:dbLocation "/var/opt/dms/services/nrwbwq/publicationSets/production/images/wales-baseline-2014-10-31-latlongfix.tgz";
     dms:effectiveDate "2014-10-31T00:00:00Z"^^xsd:dateTime;
     .
+
+:test2017Snapshot a dms:image;
+    dms:dumpFile "/var/opt/dms/services/nrwbwq/publicationSets/testing/images/s1-ds_2017-04-19_08-00-34.nq.gz";
+    dms:effectiveDate "2017-04-19T00:00:00Z"^^xsd:dateTime;
+  .
