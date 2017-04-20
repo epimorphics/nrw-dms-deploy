@@ -71,3 +71,12 @@ cookbook_file "/etc/cron.d/log-gen" do
     source "log-gen.crontab"
     mode  0644
 end
+
+# Override apache config to include pubutil access
+template "/etc/apache2/sites-available/dms.conf" do
+    source 'apache.conf.erb'
+    owner 'root'
+    group 'root'
+    mode  0644
+    notifies :reload, "service[apache2]", :delayed
+end
