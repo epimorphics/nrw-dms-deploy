@@ -16,7 +16,7 @@ sed -i -e '/39950/d' -e '/39700/d' $file
 
 if grep -sq 40600 $file && grep -sqv 40650 $file ; then
     echo "Duplicating Rhyl forcecast to Rhyl East"
-    grep 40600 temp.csv | sed -e 's/40600/40650/' >> $file
+    grep 40600 $file | sed -e 's/40600/40650/' >> $file
 
 #    if [[ $file =~ (.*)\.csv ]]; then
 #        refile="${BASH_REMATCH[1]}-rhyl-east.csv"

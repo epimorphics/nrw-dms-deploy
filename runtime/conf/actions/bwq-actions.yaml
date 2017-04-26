@@ -140,8 +140,9 @@
 "@type" : sequence
 "@actions" :
   - "@type"      : script
-    "@script"    : bwq/forecast-rhyl.sh
+    "@script"    : bwq/prf-intercept.sh
     "@args"      : [ "filename" ]
+  - "@javaclass" : com.epimorphics.dms.tasks.UploadAction
   - "@javaclass" : com.epimorphics.dms.tasks.EmbeddedPublishAction
     "publicationSet" : production
   - "@javaclass" : com.epimorphics.dms.tasks.NotifyAction
