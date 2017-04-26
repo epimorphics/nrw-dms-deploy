@@ -5,6 +5,10 @@
 [[ $# = 1 ]] || { echo "Internal error calling $0" 1>&2 ; exit 1 ; }
 readonly file="$1"
 
+echo "Removing forecasts for Aberdaron and Criccieth"
+cp $file $file.orig
+sed -i -e '/39950/d' -e '/39700/d' $file
+
 if grep -sq 40600 $file && grep -sqv 40650 $file ; then
     if [[ $file =~ (.*)\.csv ]]; then
         refile="${BASH_REMATCH[1]}-rhyl-east.csv"
