@@ -95,7 +95,6 @@
     rdfs:comment "Profiles describing attributes of bathing waters, 2015 version."@en;
     skos:notation "profiles";
     dct:isPartOf :bwq;
-    dms:dataConverter "bwq-profile";
     dms:dataConverter "revised-bwq-profile";
     dms:postPublishScript "bwq/updates/profile-rebuild.ru";
     dms:updatePolicy dms:series;
