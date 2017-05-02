@@ -5,7 +5,7 @@
 [[ $# = 1 ]] || { echo "Internal error calling $0" 1>&2 ; exit 1 ; }
 readonly file="$1"
 
-# Preserve incomign file for debug
+# Preserve incoming file for debug
 cp $file $file.orig
 
 # Ensure file ends in newline, the PRFs as supplied don't

@@ -25,6 +25,7 @@
 
     # Support for pubutil
     RewriteRule    ^/pubutil$  /pubutil/view/index [R]
+    RewriteRule    ^/pubutil/view$  /pubutil/view/index [R]
     RewriteRule    ^/pubutil/$  /pubutil/view/index [R]
     ProxyPass      /pubutil/    ajp://localhost:8009/pubutil/
 
