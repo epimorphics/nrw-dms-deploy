@@ -230,6 +230,7 @@
 #         "<def-bw:regionalOrganization>"     : "<{region.map('ea-region')}>",
          "<def-bw:regionalOrganization>"     : "<{$body_org}>",
          "<dgu:uriSet>"                      : "<{$incrementalSomDataset}>",
+         "<def-som:nirsRef>"                 : "{empty(nirs_ref) ? null : nirs_ref.asString()}",
  # Date/Time fields
          "<def-som:startOfSuspension>"       : "{$l_startDateTime}",
          "<def-som:endOfSuspension>"         : "{$l_endDateTime}",
