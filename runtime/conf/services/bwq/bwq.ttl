@@ -71,7 +71,7 @@
     skos:notation "revised-in-season";
     dct:isPartOf :bwq;
     dms:dataConverter "rbwd-in-season-assessment";
-#    dms:postPublishScript "bwq/updates/inseason-rebuild.ru";
+    dms:postPublishScript "bwq/updates/inseason-rebuild.ru";
     dms:updatePolicy dms:series;
     dms:sourcePublishDir  "sources/input";
     dms:dataPublishDir    "sources/output";
