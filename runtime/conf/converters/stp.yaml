@@ -40,7 +40,7 @@
             "$so_zoi"             : "http://environment.data.gov.uk/wales/bathing-waters/so/ZoneOfInfluence",
             "$bwspid"             : "{site.format('%05d')}",
             "$pubDateTime"        : "{$exectime.asDate('xsd:dateTime').toWholeSeconds().toLocalTime()}",
-            "$predictionDateTime" : "{datetime.asDate('yyyy-MM-dd\\'T\\'hh:mm:ss|yyyy-MM-dd\\'T\\'hh:mm:ssZZ|yyyy-MM-dd\\'T\\'HH:mm:ssZ','xsd:dateTime').toLocalTime()}",
+            "$predictionDateTime" : "{datetime.asDate('yyyy-MM-dd\\'T\\'hh:mm:ss|yyyy-MM-dd\\'T\\'hh:mm:ssZZ|yyyy-MM-dd\\'T\\'HH:mm:ssZ|yyyy-MM-dd\\'T\\'HH:mm:ss','xsd:dateTime').toLocalTime()}",
             "$ns"                 : "{= asResource($$).replaceAll('#$','') }"
         },{
             "$expiresDateTime"    : "{$predictionDateTime.plus(23,59,0)}",
