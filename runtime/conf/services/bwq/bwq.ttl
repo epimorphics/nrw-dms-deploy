@@ -188,7 +188,7 @@
     dms:publicationTier :testingPubServers;
     dms:tier :tPresServers;
     dms:consolidatedUpdates false;
-    dms:image  :testBaseline, :test2017Snapshot;
+    dms:image  :testBaseline, :test2019Snapshot;
     dms:publishAction "default/publish";
     dms:postPublishAction "bwq/postPublish";
     .
@@ -321,4 +321,9 @@
 :test2017Snapshot a dms:image;
     dms:dumpFile "/var/opt/dms/services/nrwbwq/publicationSets/testing/images/s1-ds_2017-04-19_08-00-34.nq.gz";
     dms:effectiveDate "2017-04-19T00:00:00Z"^^xsd:dateTime;
+  .
+
+:test2019Snapshot a dms:image;
+    dms:dumpFile "/var/opt/dms/services/nrwbwq/publicationSets/testing/images/s3-ds_2019-01-07_08-51-39.nq.gz";
+    dms:effectiveDate "2019-01-07T00:00:00Z"^^xsd:dateTime;
   .
