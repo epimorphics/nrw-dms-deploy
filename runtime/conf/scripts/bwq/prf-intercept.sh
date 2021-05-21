@@ -22,8 +22,8 @@ if grep -qi prediction_text_en $file ; then
 #    aws sns publish --topic-arn $CEMAES_SNS_TOPIC --region=eu-west-1 --subject "Cemaes forecast" --message "EA Forecast for Cemaes: $CEMAES_PRF"
 #  fi
 
-  echo "Removing forecasts for Aberdaron, Criccieth and Cemaes"
-  sed -i -e '/39950/d' -e '/39700/d' -e '/40050/d' $file
+  echo "Removing forecasts for Aberdaron, Criccieth, Cemaes and Llandudno West Shore"
+  sed -i -e '/39950/d' -e '/39700/d' -e '/40050/d' -e '/40200/d' $file
 
   if grep -sq 40600 $file && grep -sqv 40650 $file ; then
     echo "Duplicating Rhyl forcecast to Rhyl East, Abergele and Kinmel Bay"
