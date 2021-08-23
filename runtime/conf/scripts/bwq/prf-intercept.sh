@@ -36,6 +36,8 @@ if grep -qi prediction_text_en $file ; then
 
   echo "Forwarding original forecast to nrw-ctrl dev"
   curl -i -u forecastuser:r1SuN4MsNf -H "Content-Type: text/csv" -X POST --data-binary "@${file}.orig" https://nrw-ctrl.epimorphics.net/dms/api/nrwbwq/components/forecasts/publishDev
+  echo "Forwarding original forecast to nrw-ctrl prod"
+  curl -i -u forecastuser:r1SuN4MsNf -H "Content-Type: text/csv" -X POST --data-binary "@${file}.orig" https://nrw-ctrl.epimorphics.net/dms/api/nrwbwq/components/forecasts/publishProduction
   echo "Forwarding completed"
 
 else
