@@ -2,6 +2,8 @@
 
 DMS deployment configuration for NRW
 
+**Obsolete:** replaced by `nrw-dms-deploy-docker`
+
 ## Commands
 
 All should be run from the root of the project directory tree
